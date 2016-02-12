@@ -3,6 +3,8 @@ package FR.CNAM.NFP121.BONNARDDREVET.SCRUM.gui;
 import javax.swing.JApplet;
 
 public class Fenetre extends JApplet {
+	public Fenetre() {
+	}
 
 	
 	/**
