@@ -8,6 +8,7 @@ public class Tache {
 	private String nomTache;
 	private Status statusEnCours;
 	private List<Utilisateur> utilisateurTache;
+	private TypeTache typeTache;
 	
 	
 	
@@ -17,6 +18,12 @@ public class Tache {
 	
 	public int getIdTache() {
 		return idTache;
+	}
+	public TypeTache getTypeTache() {
+		return typeTache;
+	}
+	public void setTypeTache(TypeTache typeTache) {
+		this.typeTache = typeTache;
 	}
 	public void setIdTache(int idTache) {
 		this.idTache = idTache;
@@ -53,11 +60,12 @@ public class Tache {
 	/*
 	 * Constructeur sans utilisateur
 	 */
-	public Tache(int idTache, String nomTache, Status statusEnCours) {
+	public Tache(int idTache, String nomTache, Status statusEnCours, TypeTache typeTache) {
 		super();
 		this.idTache = idTache;
 		this.nomTache = nomTache;
 		this.statusEnCours = statusEnCours;
+		this.typeTache = typeTache;
 	}
 	
 	
@@ -65,12 +73,13 @@ public class Tache {
 	/*
 	 * Constructeur complet
 	 */
-	public Tache(int idTache, String nomTache, Status statusEnCours, List<Utilisateur> utilisateurTache) {
+	public Tache(int idTache, String nomTache, Status statusEnCours, List<Utilisateur> utilisateurTache, TypeTache typeTache) {
 		super();
 		this.idTache = idTache;
 		this.nomTache = nomTache;
 		this.statusEnCours = statusEnCours;
 		this.utilisateurTache = utilisateurTache;
+		this.typeTache = typeTache;
 	}
 	
 	
