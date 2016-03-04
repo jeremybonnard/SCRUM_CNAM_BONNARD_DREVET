@@ -4,6 +4,7 @@ import java.util.List;
 
 public class Tache {
 	
+	private static int idTacheMax;
 	private int idTache;
 	private String nomTache;
 	private Status statusEnCours;
@@ -46,26 +47,34 @@ public class Tache {
 	public void setUtilisateurTache(List<Utilisateur> utilisateurTache) {
 		this.utilisateurTache = utilisateurTache;
 	}
+	public static int getIdTacheMax() {
+		return idTacheMax;
+	}
+	public static void setIdTacheMax(int idTacheMax) {
+		Tache.idTacheMax = idTacheMax;
+	}
 	
 	/*
 	 * Constructeur vide
 	 */
 	
-	
 	public Tache() {
 		super();
+		this.idTache = Tache.idTacheMax;
+		Tache.idTacheMax++;
 	}
 	
 	
 	/*
 	 * Constructeur sans utilisateur
 	 */
-	public Tache(int idTache, String nomTache, Status statusEnCours, TypeTache typeTache) {
+	public Tache(String nomTache, Status statusEnCours, TypeTache typeTache) {
 		super();
-		this.idTache = idTache;
+		this.idTache =Tache.idTacheMax;
 		this.nomTache = nomTache;
 		this.statusEnCours = statusEnCours;
 		this.typeTache = typeTache;
+		Tache.idTacheMax++;
 	}
 	
 	
@@ -73,13 +82,14 @@ public class Tache {
 	/*
 	 * Constructeur complet
 	 */
-	public Tache(int idTache, String nomTache, Status statusEnCours, List<Utilisateur> utilisateurTache, TypeTache typeTache) {
+	public Tache( String nomTache, Status statusEnCours, List<Utilisateur> utilisateurTache, TypeTache typeTache) {
 		super();
-		this.idTache = idTache;
+		this.idTache = Tache.idTacheMax;
 		this.nomTache = nomTache;
 		this.statusEnCours = statusEnCours;
 		this.utilisateurTache = utilisateurTache;
 		this.typeTache = typeTache;
+		Tache.idTacheMax++;
 	}
 	
 	

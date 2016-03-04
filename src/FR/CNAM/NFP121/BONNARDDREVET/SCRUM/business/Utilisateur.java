@@ -10,7 +10,7 @@ public class Utilisateur {
 	 *Variables
 	 *
 	 */
-	
+	private static int idUtilisateurMax;
 	private int idUtilisateur;
 	private String nomUtilisateur;
 	private String prenomUtilisateur;
@@ -23,7 +23,12 @@ public class Utilisateur {
 	 * Getter setter
 	 */
 	
-	
+	public static int getIdUtilisateurMax() {
+		return idUtilisateurMax;
+	}
+	public static void setIdUtilisateurMax(int idUtilisateurMax) {
+		Utilisateur.idUtilisateurMax = idUtilisateurMax;
+	}
 	public int getIdUtilisateur() {
 		return idUtilisateur;
 	}
@@ -69,14 +74,15 @@ public class Utilisateur {
 	 * Constructeur utilisateur complet sans tache.
 	 */
 	
-	public Utilisateur(int idUtilisateur, String nomUtilisateur, String prenomUtilisateur, String mailUtilisateur,
+	public Utilisateur( String nomUtilisateur, String prenomUtilisateur, String mailUtilisateur,
 			Date naissanceUtilisateur) {
 		super();
-		this.idUtilisateur = idUtilisateur;
+		this.idUtilisateur = Utilisateur.idUtilisateurMax;
 		this.nomUtilisateur = nomUtilisateur;
 		this.prenomUtilisateur = prenomUtilisateur;
 		this.mailUtilisateur = mailUtilisateur;
 		this.naissanceUtilisateur = naissanceUtilisateur;
+		Utilisateur.idUtilisateurMax ++;
 	}
 	
 	
@@ -88,6 +94,8 @@ public class Utilisateur {
 	
 	public Utilisateur() {
 		super();
+		this.idUtilisateur = Utilisateur.idUtilisateurMax;
+		Utilisateur.idUtilisateurMax++;
 	}
 	
 	
@@ -99,12 +107,13 @@ public class Utilisateur {
 	public Utilisateur(int idUtilisateur, String nomUtilisateur, String prenomUtilisateur, String mailUtilisateur,
 			Date naissanceUtilisateur, List<Tache> tachesUtilisateur) {
 		super();
-		this.idUtilisateur = idUtilisateur;
+		this.idUtilisateur = Utilisateur.idUtilisateurMax;
 		this.nomUtilisateur = nomUtilisateur;
 		this.prenomUtilisateur = prenomUtilisateur;
 		this.mailUtilisateur = mailUtilisateur;
 		this.naissanceUtilisateur = naissanceUtilisateur;
 		this.tachesUtilisateur = tachesUtilisateur;
+		Utilisateur.idUtilisateurMax++;
 	}
 	
 	
