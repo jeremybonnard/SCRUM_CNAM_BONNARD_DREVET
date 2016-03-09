@@ -18,6 +18,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JSplitPane;
+import javax.swing.JDesktopPane;
 
 public class Fenetre extends JFrame {
 
@@ -51,6 +53,19 @@ public class Fenetre extends JFrame {
 		
 		JMenu mnFichier = new JMenu("Fichier");
 		menuBar.add(mnFichier);
+		
+		JMenuItem mntmSauvegarder = new JMenuItem("Sauvegarder");
+		mnFichier.add(mntmSauvegarder);
+		
+		JMenuItem mntmQuitter = new JMenuItem("Quitter");
+		mntmQuitter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				dispose();
+				
+			}
+		});
+		mnFichier.add(mntmQuitter);
 		
 		JMenu mnEquipe = new JMenu("Equipe");
 		menuBar.add(mnEquipe);
