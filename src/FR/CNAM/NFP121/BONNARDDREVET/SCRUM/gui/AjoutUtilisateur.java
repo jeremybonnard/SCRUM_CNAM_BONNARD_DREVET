@@ -16,6 +16,10 @@ import java.awt.event.ActionEvent;
 import javax.swing.JFormattedTextField;
 import com.toedter.calendar.JDateChooser;
 
+import FR.CNAM.NFP121.BONNARDDREVET.SCRUM.business.Utilisateur;
+import FR.CNAM.NFP121.BONNARDDREVET.SCRUM.dao.FenetreUtil;
+import FR.CNAM.NFP121.BONNARDDREVET.SCRUM.dao.UtilisateurUtil;
+
 public class AjoutUtilisateur extends JFrame {
 
 	private JPanel contentPane;
@@ -117,19 +121,39 @@ public class AjoutUtilisateur extends JFrame {
 						}
 						else
 						{
-							//Date dateEntreUtilisateur = JCalendarDateNaissance.getDate();
-							if(JCalendarDateNaissance.getDate() == null)
-							{
-								JOptionPane erreurAbsenceText = new JOptionPane();
-								erreurAbsenceText.showMessageDialog(erreurAbsenceText, "Date de naissance manquante ou invalide", "Erreur", JOptionPane.WARNING_MESSAGE);
+							if(JTextEmail.getText().matches("^(.*)@(.*)\\.(.{2,4})$")){
+								//Date dateEntreUtilisateur = JCalendarDateNaissance.getDate();
+								if(JCalendarDateNaissance.getDate() == null)
+								{
+									JOptionPane erreurAbsenceText = new JOptionPane();
+									erreurAbsenceText.showMessageDialog(erreurAbsenceText, "Date de naissance manquante ou invalide", "Erreur", JOptionPane.WARNING_MESSAGE);
+								}
+								else
+								{
+									Utilisateur unNouveauUtilisateur = new Utilisateur(JTextNom.getText(), JTextPrenom.getText(), JTextEmail.getText(), JCalendarDateNaissance.getDate());
+									if(UtilisateurUtil.enregistrerUtilisateur(unNouveauUtilisateur))
+									{
+										JOptionPane validationEnregistrement = new JOptionPane();
+										validationEnregistrement.showMessageDialog(validationEnregistrement, "Enregistrement effectué avec succès","Succès de l'enregistrement", JOptionPane.INFORMATION_MESSAGE);
+										FenetreUtil.actualiserUtilisateur();
+										dispose();
+										
+									}
+									else
+									{
+										JOptionPane erreurAbsenceText = new JOptionPane();
+										erreurAbsenceText.showMessageDialog(erreurAbsenceText, "Un Erreur a eu lieu lors de l'enregistrement", "Erreur", JOptionPane.WARNING_MESSAGE);
+
+									}
+									
+									
+								}						
 							}
 							else
 							{
-								JOptionPane validationEnregistrement = new JOptionPane();
-								validationEnregistrement.showMessageDialog(validationEnregistrement, "Enregistrement effectué avec succès","Succès de l'enregistrement", JOptionPane.INFORMATION_MESSAGE);
-								dispose();
+								JOptionPane erreurAbsenceText = new JOptionPane();
+								erreurAbsenceText.showMessageDialog(erreurAbsenceText, "Adresse E-mail Incorrect", "Erreur", JOptionPane.WARNING_MESSAGE);
 							}
-							
 						
 						
 						}

@@ -24,7 +24,7 @@ import javax.swing.JDesktopPane;
 public class Fenetre extends JFrame {
 
 	private JPanel contentPane;
-
+	public static Fenetre fenetreMere;
 	/**
 	 * Launch the application.
 	 */
@@ -45,6 +45,7 @@ public class Fenetre extends JFrame {
 	 * Create the frame.
 	 */
 	public Fenetre() {
+		Fenetre.fenetreMere = this;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		
