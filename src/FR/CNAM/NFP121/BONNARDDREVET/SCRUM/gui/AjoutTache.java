@@ -99,21 +99,24 @@ public class AjoutTache extends JFrame {
 					}
 					else
 					{
-						System.out.println("ixi");
+						
 						Status statusDepart = StatusUtil.getStatusDepart();
 						List<Utilisateur> utilisateursDepart = new ArrayList<Utilisateur>();
 						for(Object unNomSelectionner : JListUtilisateurs.getSelectedValues())
 						{
 							utilisateursDepart.add(UtilisateurUtil.getUtilisateurParNomPrenom(unNomSelectionner.toString()));
-							System.out.println(unNomSelectionner.toString());
+							//System.out.println(unNomSelectionner.toString());
 						}
 						Tache tacheCree = new Tache(JTextNomTache.getText(),statusDepart,utilisateursDepart, typeTacheCreationEnCours);
-						System.out.println(tacheCree);
+						//System.out.println(tacheCree);
+						JOptionPane validationEnregistrement = new JOptionPane();
+						validationEnregistrement.showMessageDialog(validationEnregistrement, "Enregistrement effectué avec succès","Succès de l'enregistrement", JOptionPane.INFORMATION_MESSAGE);
+						dispose();
 						
 					}
-					System.out.println("OK");
+					
 				}
-				System.out.println("Fin");
+				
 				
 			}
 		});

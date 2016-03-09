@@ -70,6 +70,20 @@ public class Fenetre extends JFrame {
 		JMenu mnEquipe = new JMenu("Equipe");
 		menuBar.add(mnEquipe);
 		
+		JMenuItem mntmAjoutUtilisateur = new JMenuItem("Ajout Utilisateur");
+		mntmAjoutUtilisateur.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				AjoutUtilisateur nvUtilisateur = new AjoutUtilisateur();
+				nvUtilisateur.setVisible(true);
+				
+				
+				
+				
+			}
+		});
+		mnEquipe.add(mntmAjoutUtilisateur);
+		
 		JMenu mnTche = new JMenu("T\u00E2che");
 		menuBar.add(mnTche);
 		
@@ -104,7 +118,7 @@ public class Fenetre extends JFrame {
 				
 				JOptionPane aPropos = new JOptionPane();
 			
-				aPropos.showMessageDialog(aPropos, "Ceci est l'a propos", "A propos", JOptionPane.INFORMATION_MESSAGE);
+				aPropos.showMessageDialog(aPropos, "Nom : ScrumBoard\nDevelopper : Jeremy Bonnard et Vincent DREVET\nVersion : 1.0\nDate de réalisation :  25 mars 2016\nLicence GPL :p", "A propos", JOptionPane.INFORMATION_MESSAGE);
 
 				
 			}
