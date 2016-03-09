@@ -100,7 +100,7 @@ public class AjoutTache extends JFrame {
 						Status statusDepart = StatusUtil.getStatusDepart();
 						List<Utilisateur> utilisateurDepart = new ArrayList<Utilisateur>();
 						
-						Tache tacheCree = new Tache(JTextNomTache.getText(),statusDepart,utilisateursDepart);
+						Tache tacheCree = new Tache(JTextNomTache.getText(),statusDepart,utilisateurDepart);
 						
 						
 					}
