@@ -1,9 +1,10 @@
 package FR.CNAM.NFP121.BONNARDDREVET.SCRUM.business;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class Utilisateur {
+public class Utilisateur implements Serializable {
 
 	/*
 	 * 
@@ -114,6 +115,12 @@ public class Utilisateur {
 		this.naissanceUtilisateur = naissanceUtilisateur;
 		this.tachesUtilisateur = tachesUtilisateur;
 		Utilisateur.idUtilisateurMax++;
+	}
+	@Override
+	public String toString() {
+		return "Utilisateur [idUtilisateur=" + idUtilisateur + ", nomUtilisateur=" + nomUtilisateur
+				+ ", prenomUtilisateur=" + prenomUtilisateur + ", mailUtilisateur=" + mailUtilisateur
+				+ ", naissanceUtilisateur=" + naissanceUtilisateur + ", tachesUtilisateur=" + tachesUtilisateur + "]";
 	}
 	
 	

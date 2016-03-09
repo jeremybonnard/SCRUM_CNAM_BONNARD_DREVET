@@ -1,4 +1,5 @@
 package FR.CNAM.NFP121.BONNARDDREVET.SCRUM.dao;
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -13,85 +14,52 @@ import java.util.List;
 import FR.CNAM.NFP121.BONNARDDREVET.SCRUM.business.Utilisateur;
 
 public class UtilisateurUtil {
-
+	/*
+	 * Fonction de sauvegarde d'un utilisateur
+	 */
 	public static boolean enregistrerUtilisateur(Utilisateur unUtilisateur){
-		
-
-		File fichier1 = new File("data.bin");
-		
+		ObjectOutputStream ObjectOutput = null;
+		List<Utilisateur> allUtilisateurs = allUtilisateurs();
+		allUtilisateurs.add(unUtilisateur);
 		try {
-			FileWriter fileWriter1 = new FileWriter(fichier1);
-			FileOutputStream fileOutputStream1 = null;
-			try {
-				fileOutputStream1 = new FileOutputStream(fichier1);
-				ObjectOutputStream objectOutputStream1 = null;
-				try {
-					objectOutputStream1 = new ObjectOutputStream(fileOutputStream1);
-					try {
-						objectOutputStream1.writeObject(unUtilisateur);
-						return true;
-						
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}				
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}			
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}			
+			ObjectOutput = new ObjectOutputStream(new FileOutputStream("lesUtilisateurs.ser", false));
+			
+			ObjectOutput.writeObject(allUtilisateurs);
+			ObjectOutput.close();
+			return true;
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return false;
-		
-	
-		
-		
-		
-		
-		
-		
-		
-		
 	}
 	
-	
+	/*
+	 * Fonction de recuperation de tout les utilisateurs.
+	 */
 	public static List<Utilisateur> allUtilisateurs(){
 		List<Utilisateur> allUtilisateurs = new ArrayList<Utilisateur>();
-		
-		File fichier1 = new File("data.bin");
-		
+		File fichier1 = new File("lesUtilisateurs.ser");
+		FileInputStream fichierUtilisateur = null;
+		BufferedInputStream bufferedInputStream1 = null;
+		ObjectInputStream lesUtilisateursEnregistree = null;
 		try {
-			FileWriter fileWriter1 = new FileWriter(fichier1);
-			FileInputStream fileInputStream1 = null;
-			try{
-				
-				fileInputStream1 = new FileInputStream(fichier1);
-				ObjectInputStream objectInputStream1 = null;
-				
-				try {
-					objectInputStream1 = new ObjectInputStream(fileInputStream1);
-					//try {
-						//objectInputStream1.readObject(allUtilisateurs);
-						//return true;
-						
-					//} //catch (IOException e) {
-						// TODO Auto-generated catch block
-						//e.printStackTrace();
-					//}				
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}			
-			} catch (FileNotFoundException e) {
+			fichierUtilisateur = new FileInputStream(fichier1);
+			bufferedInputStream1 = new BufferedInputStream(fichierUtilisateur);
+			lesUtilisateursEnregistree = new ObjectInputStream(bufferedInputStream1);
+			
+			try {
+				return (List<Utilisateur>) lesUtilisateursEnregistree.readObject();
+			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}			
+			}
+			lesUtilisateursEnregistree.close();
+			
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -1,8 +1,9 @@
 package FR.CNAM.NFP121.BONNARDDREVET.SCRUM.business;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class HistoriqueTache {
+public class HistoriqueTache implements Serializable {
 	
 	private Tache tacheEnCours;
 	private Date dateDebut;

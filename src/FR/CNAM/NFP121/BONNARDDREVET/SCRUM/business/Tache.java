@@ -1,8 +1,9 @@
 package FR.CNAM.NFP121.BONNARDDREVET.SCRUM.business;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Tache {
+public class Tache implements Serializable{
 	
 	private static int idTacheMax;
 	private int idTache;

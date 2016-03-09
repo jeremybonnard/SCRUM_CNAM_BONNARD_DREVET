@@ -1,6 +1,8 @@
 package FR.CNAM.NFP121.BONNARDDREVET.SCRUM.business;
 
-public class TypeTache {
+import java.io.Serializable;
+
+public class TypeTache implements Serializable {
 
 	private int idTypeTache;
 	private String nomTypeTache;
