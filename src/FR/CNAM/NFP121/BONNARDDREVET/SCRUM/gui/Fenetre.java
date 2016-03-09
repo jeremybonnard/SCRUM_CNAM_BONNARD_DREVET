@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import FR.CNAM.NFP121.BONNARDDREVET.SCRUM.business.TypeTache;
+
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
@@ -58,8 +61,9 @@ public class Fenetre extends JFrame {
 		JMenuItem mntmNouvelleFonctionnalit = new JMenuItem("Nouvelle Fonctionnalit\u00E9");
 		mntmNouvelleFonctionnalit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				
+				TypeTache typeTacheCreationEnCours = new TypeTache(0, "Fonctionnalitee","#00000");
+				AjoutTache nvAjoutTache = new AjoutTache(typeTacheCreationEnCours);
+				nvAjoutTache.setVisible(true);
 				
 				
 				

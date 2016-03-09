@@ -76,14 +76,14 @@ public class UtilisateurUtil {
 				
 				try {
 					objectInputStream1 = new ObjectInputStream(fileInputStream1);
-					try {
-						objectInputStream1.readObject(allUtilisateurs);
-						return true;
+					//try {
+						//objectInputStream1.readObject(allUtilisateurs);
+						//return true;
 						
-					} catch (IOException e) {
+					//} //catch (IOException e) {
 						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}				
+						//e.printStackTrace();
+					//}				
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

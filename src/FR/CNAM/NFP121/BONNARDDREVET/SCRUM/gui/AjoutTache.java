@@ -9,8 +9,10 @@ import javax.swing.border.EmptyBorder;
 
 import FR.CNAM.NFP121.BONNARDDREVET.SCRUM.business.Status;
 import FR.CNAM.NFP121.BONNARDDREVET.SCRUM.business.Tache;
+import FR.CNAM.NFP121.BONNARDDREVET.SCRUM.business.TypeTache;
 import FR.CNAM.NFP121.BONNARDDREVET.SCRUM.business.Utilisateur;
 import FR.CNAM.NFP121.BONNARDDREVET.SCRUM.dao.StatusUtil;
+import FR.CNAM.NFP121.BONNARDDREVET.SCRUM.dao.UtilisateurUtil;
 
 import javax.swing.JTextField;
 import javax.swing.JLabel;
@@ -35,7 +37,8 @@ public class AjoutTache extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AjoutTache frame = new AjoutTache();
+					TypeTache tacheTest = new TypeTache(0,"Test","#FFFFFF");
+					AjoutTache frame = new AjoutTache(tacheTest);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -47,7 +50,7 @@ public class AjoutTache extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public AjoutTache() {
+	public AjoutTache(TypeTache typeTacheCreationEnCours) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -80,7 +83,6 @@ public class AjoutTache extends JFrame {
 		JButton btnCrerTche = new JButton("Cr\u00E9er t\u00E2che");
 		btnCrerTche.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
 				//test nom manquant
 				System.out.println(JTextNomTache.getText());
 				if(JTextNomTache.getText().equals(""))
@@ -97,11 +99,16 @@ public class AjoutTache extends JFrame {
 					}
 					else
 					{
+						System.out.println("ixi");
 						Status statusDepart = StatusUtil.getStatusDepart();
-						List<Utilisateur> utilisateurDepart = new ArrayList<Utilisateur>();
-						
-						Tache tacheCree = new Tache(JTextNomTache.getText(),statusDepart,utilisateursDepart);
-						
+						List<Utilisateur> utilisateursDepart = new ArrayList<Utilisateur>();
+						for(Object unNomSelectionner : JListUtilisateurs.getSelectedValues())
+						{
+							utilisateursDepart.add(UtilisateurUtil.getUtilisateurParNomPrenom(unNomSelectionner.toString()));
+							System.out.println(unNomSelectionner.toString());
+						}
+						Tache tacheCree = new Tache(JTextNomTache.getText(),statusDepart,utilisateursDepart, typeTacheCreationEnCours);
+						System.out.println(tacheCree);
 						
 					}
 					System.out.println("OK");

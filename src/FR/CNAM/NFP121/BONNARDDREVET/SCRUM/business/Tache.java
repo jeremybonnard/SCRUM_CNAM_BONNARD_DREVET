@@ -91,6 +91,15 @@ public class Tache {
 		this.typeTache = typeTache;
 		Tache.idTacheMax++;
 	}
+	/*
+	 * ToString
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Tache [idTache=" + idTache + ", nomTache=" + nomTache + ", statusEnCours=" + statusEnCours
+				+ ", utilisateurTache=" + utilisateurTache + ", typeTache=" + typeTache + "]";
+	}
 	
 	
 	
