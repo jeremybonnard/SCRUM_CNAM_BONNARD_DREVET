@@ -11,7 +11,9 @@ import FR.CNAM.NFP121.BONNARDDREVET.SCRUM.business.Status;
 import FR.CNAM.NFP121.BONNARDDREVET.SCRUM.business.Tache;
 import FR.CNAM.NFP121.BONNARDDREVET.SCRUM.business.TypeTache;
 import FR.CNAM.NFP121.BONNARDDREVET.SCRUM.business.Utilisateur;
+import FR.CNAM.NFP121.BONNARDDREVET.SCRUM.dao.FenetreUtil;
 import FR.CNAM.NFP121.BONNARDDREVET.SCRUM.dao.StatusUtil;
+import FR.CNAM.NFP121.BONNARDDREVET.SCRUM.dao.TacheUtils;
 import FR.CNAM.NFP121.BONNARDDREVET.SCRUM.dao.UtilisateurUtil;
 
 import javax.swing.JTextField;
@@ -19,11 +21,14 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.AbstractListModel;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.awt.event.ActionEvent;
+import java.awt.ScrollPane;
+import javax.swing.JScrollPane;
 
 public class AjoutTache extends JFrame {
 
@@ -67,9 +72,23 @@ public class AjoutTache extends JFrame {
 		lblNomDeLa.setBounds(10, 17, 88, 14);
 		contentPane.add(lblNomDeLa);
 		
-		JList JListUtilisateurs = new JList();
+
+		
+		List<Utilisateur> allUtilisateur = UtilisateurUtil.allUtilisateurs();
+		DefaultListModel listModel = new DefaultListModel();
+		String[] values = new String[allUtilisateur.size()];
+		for(int i=0; i<allUtilisateur.size();i++)
+		{
+			values[i] = allUtilisateur.get(i).getNomUtilisateur()+"  "+allUtilisateur.get(i).getPrenomUtilisateur();
+		}
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(10, 100, 145, 151);
+		contentPane.add(scrollPane_1);
+		
+		
+		JList JListUtilisateurs = new JList(values);
+		scrollPane_1.setViewportView(JListUtilisateurs);
 		JListUtilisateurs.setModel(new AbstractListModel() {
-			String[] values = new String[] {"toto", "titi", "tata"};
 			public int getSize() {
 				return values.length;
 			}
@@ -77,9 +96,6 @@ public class AjoutTache extends JFrame {
 				return values[index];
 			}
 		});
-		JListUtilisateurs.setBounds(10, 98, 95, 82);
-		contentPane.add(JListUtilisateurs);
-		
 		JButton btnCrerTche = new JButton("Cr\u00E9er t\u00E2che");
 		btnCrerTche.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -104,11 +120,18 @@ public class AjoutTache extends JFrame {
 						List<Utilisateur> utilisateursDepart = new ArrayList<Utilisateur>();
 						for(Object unNomSelectionner : JListUtilisateurs.getSelectedValues())
 						{
-							utilisateursDepart.add(UtilisateurUtil.getUtilisateurParNomPrenom(unNomSelectionner.toString()));
-							//System.out.println(unNomSelectionner.toString());
+							Utilisateur utilisateurSelectionner = UtilisateurUtil.getUtilisateurParNomPrenom(unNomSelectionner.toString());
+							utilisateursDepart.add(utilisateurSelectionner);
+							
 						}
+						
 						Tache tacheCree = new Tache(JTextNomTache.getText(),statusDepart,utilisateursDepart, typeTacheCreationEnCours);
-						//System.out.println(tacheCree);
+						TacheUtils.enregistrerTache(tacheCree);
+						for(Utilisateur unUtilisateur : utilisateursDepart)
+						{
+							UtilisateurUtil.ajoutTacheUtilisateur(unUtilisateur, tacheCree);
+						}
+						FenetreUtil.actualiserTache();
 						JOptionPane validationEnregistrement = new JOptionPane();
 						validationEnregistrement.showMessageDialog(validationEnregistrement, "Enregistrement effectué avec succès","Succès de l'enregistrement", JOptionPane.INFORMATION_MESSAGE);
 						dispose();
@@ -128,7 +151,9 @@ public class AjoutTache extends JFrame {
 		contentPane.add(lblSelectionnerLesUtilisateurs);
 		
 		JLabel lblMaintenirCtrlPour = new JLabel("Maintenir ctrl pour selectionner plusieurs personne");
-		lblMaintenirCtrlPour.setBounds(115, 116, 301, 20);
+		lblMaintenirCtrlPour.setBounds(165, 102, 259, 20);
 		contentPane.add(lblMaintenirCtrlPour);
+		
+		
 	}
 }

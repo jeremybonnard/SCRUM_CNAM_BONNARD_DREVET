@@ -99,7 +99,7 @@ public class Tache implements Serializable{
 	@Override
 	public String toString() {
 		return "Tache [idTache=" + idTache + ", nomTache=" + nomTache + ", statusEnCours=" + statusEnCours
-				+ ", utilisateurTache=" + utilisateurTache + ", typeTache=" + typeTache + "]";
+				+ ", utilisateurTache=" + utilisateurTache + ", typeTache=" + typeTache + ", tachemax: "+ idTacheMax +"]";
 	}
 	
 	

@@ -11,6 +11,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import FR.CNAM.NFP121.BONNARDDREVET.SCRUM.business.Tache;
 import FR.CNAM.NFP121.BONNARDDREVET.SCRUM.business.Utilisateur;
 
 public class UtilisateurUtil {
@@ -64,17 +65,7 @@ public class UtilisateurUtil {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-				
-				
-				
-			
-		
-		// A Faire!!!
-		
 		return allUtilisateurs;
-		
-		
-		
 	}
 	
 	// getUtilisateurParNomPrenom renvoie un utilisateur grace a son nom prenom
@@ -92,6 +83,46 @@ public class UtilisateurUtil {
 		return utilisateurcherche;
 	}
 	
+	public static void ajoutTacheUtilisateur(Utilisateur unUtilisateur, Tache uneTache)
+	{
+		List<Tache> listeTache = new ArrayList<Tache>();
+		listeTache.addAll(unUtilisateur.getTachesUtilisateur());
+		listeTache.add(uneTache);
+		Utilisateur nouveauUtilisateur = null;
+		try {
+			nouveauUtilisateur = unUtilisateur.clone();
+		} catch (CloneNotSupportedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		nouveauUtilisateur.setTachesUtilisateur(listeTache);
+		
+		UtilisateurUtil.modifierUtilisateur(unUtilisateur, nouveauUtilisateur);
+		
+	}
+	
+	public static void modifierUtilisateur(Utilisateur ancienUtilisateur, Utilisateur nouveauUtilisateur)
+	{
+		ObjectOutputStream ObjectOutput = null;
+		List<Utilisateur> allUtilisateurs = allUtilisateurs();
+		allUtilisateurs.remove(ancienUtilisateur);
+		allUtilisateurs.add(nouveauUtilisateur);
+		try {
+			ObjectOutput = new ObjectOutputStream(new FileOutputStream("lesUtilisateurs.ser", false));
+			
+			ObjectOutput.writeObject(allUtilisateurs);
+			ObjectOutput.close();
+	
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+	}
 	
 	
 }

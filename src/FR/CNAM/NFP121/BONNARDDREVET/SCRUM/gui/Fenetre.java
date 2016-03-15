@@ -7,8 +7,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import FR.CNAM.NFP121.BONNARDDREVET.SCRUM.business.Tache;
 import FR.CNAM.NFP121.BONNARDDREVET.SCRUM.business.TypeTache;
 import FR.CNAM.NFP121.BONNARDDREVET.SCRUM.dao.FenetreUtil;
+import FR.CNAM.NFP121.BONNARDDREVET.SCRUM.dao.TacheUtils;
 
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
@@ -17,10 +19,15 @@ import javax.swing.JOptionPane;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.List;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JSplitPane;
 import javax.swing.JDesktopPane;
+import javax.swing.JTabbedPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.ListSelectionModel;
 
 public class Fenetre extends JFrame {
 
@@ -30,6 +37,7 @@ public class Fenetre extends JFrame {
 	private JMenu mnEquipe;
 	private JMenu mnTche;
 	private JMenu mnAPropos;
+	private JTable table;
 	/**
 	 * Launch the application.
 	 */
@@ -126,8 +134,26 @@ public class Fenetre extends JFrame {
 		mnAPropos.add(mntmAPropos);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		List<Tache> allTache = TacheUtils.allTaches();
+		table = new JTable(allTache.size()+1,4);
+		table.setRowSelectionAllowed(false);
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+				{"A Faire", "En Cours", "En Test", "Fini"},
+				{null, null, null, null},
+			},
+			new String[] {
+				"A", "B", "C", "D"
+			}
+		));
+		table.setToolTipText("");
+		
+		table.setBounds(28, 11, 375, 80);
+		
+		contentPane.add(table);
 	}
 
 	public JMenu getMenuFichier() {
@@ -142,4 +168,5 @@ public class Fenetre extends JFrame {
 	public JMenu getMenuAPropos() {
 		return mnAPropos;
 	}
+	
 }

@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class Utilisateur implements Serializable {
+public class Utilisateur implements Serializable , Cloneable {
 
 	/*
 	 * 
@@ -123,6 +123,9 @@ public class Utilisateur implements Serializable {
 				+ ", naissanceUtilisateur=" + naissanceUtilisateur + ", tachesUtilisateur=" + tachesUtilisateur + "]";
 	}
 	
+	public Utilisateur clone() throws CloneNotSupportedException{ 
+	return (Utilisateur) super.clone(); 
+	} 
 	
 	
 	

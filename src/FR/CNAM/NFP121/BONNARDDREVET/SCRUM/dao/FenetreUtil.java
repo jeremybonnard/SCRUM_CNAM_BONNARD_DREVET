@@ -37,13 +37,13 @@ public class FenetreUtil {
 		List<Utilisateur> allUtilisateur = UtilisateurUtil.allUtilisateurs();
 		for( Utilisateur unUtilisateur : allUtilisateur)
 		{
-			JMenuItem menuUtilisateur = new JMenuItem(unUtilisateur.getNomUtilisateur()+"  "+unUtilisateur.getNomUtilisateur());
+			JMenuItem menuUtilisateur = new JMenuItem(unUtilisateur.getNomUtilisateur()+"  "+unUtilisateur.getPrenomUtilisateur());
 			menuUtilisateur.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
 					JOptionPane InfoUtilisateur = new JOptionPane();
 // Sur click affichage des info
 // DATE EN ANGLAIS ESSAYER DE CHANGER EN FR
-					String sInfoUtilisateur = unUtilisateur.getNomUtilisateur()+"  "+unUtilisateur.getNomUtilisateur()+". Date de Naissance : "+unUtilisateur.getNaissanceUtilisateur()+". Adresse Mail : "+unUtilisateur.getMailUtilisateur();
+					String sInfoUtilisateur = unUtilisateur.getNomUtilisateur()+"  "+unUtilisateur.getPrenomUtilisateur()+". Date de Naissance : "+unUtilisateur.getNaissanceUtilisateur()+". Adresse Mail : "+unUtilisateur.getMailUtilisateur();
 				
 // A essayer de faire fonctionner : donne les tache de la personne					
 					/*if(unUtilisateur.getTachesUtilisateur().isEmpty())
@@ -64,5 +64,10 @@ public class FenetreUtil {
 			});
 			MenuEquipe.add(menuUtilisateur);
 		}
+	}
+	
+	public static void actualiserTache(){
+
+		//A FAIRE 
 	}
 }
