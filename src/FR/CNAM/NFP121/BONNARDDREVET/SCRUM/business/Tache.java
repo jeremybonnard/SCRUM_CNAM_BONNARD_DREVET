@@ -3,6 +3,27 @@ package FR.CNAM.NFP121.BONNARDDREVET.SCRUM.business;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * 
+ * @author Vincent
+ *
+ *Classe Tache Decrivant les caracteristiques d'une Tache
+ *Cette classe implémente l'interface serializable
+ *Elle dispose de 6 attributs
+ *		- idTacheMax
+ *		- idTache
+ *		- nomTache
+ *		- statusEnCours
+ *		- utilisateurTache
+ *		- typeTache
+ *
+ *
+ */
+
+
+
+
+
 public class Tache implements Serializable{
 	
 	public static int idTacheMax;
@@ -69,6 +90,14 @@ public class Tache implements Serializable{
 	/*
 	 * Constructeur sans utilisateur
 	 */
+	
+	
+	/**
+	 * Constructeur de la classe Tache sans utilisateur.
+	 * @param nomTache
+	 * @param statusEnCours
+	 * @param typeTache
+	 */
 	public Tache(String nomTache, Status statusEnCours, TypeTache typeTache) {
 		super();
 		this.idTache =Tache.idTacheMax;
@@ -82,6 +111,14 @@ public class Tache implements Serializable{
 	
 	/*
 	 * Constructeur complet
+	 */
+	
+	/**
+	 * Constructeur complet de la classe Tache
+	 * @param nomTache
+	 * @param statusEnCours
+	 * @param utilisateurTache
+	 * @param typeTache
 	 */
 	public Tache( String nomTache, Status statusEnCours, List<Utilisateur> utilisateurTache, TypeTache typeTache) {
 		super();
@@ -97,6 +134,11 @@ public class Tache implements Serializable{
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
+	
+	
+	/**
+	 * Methode retournant les variables de la classe
+	 */
 	public String toString() {
 		return "Tache [idTache=" + idTache + ", nomTache=" + nomTache + ", statusEnCours=" + statusEnCours
 				+ ", utilisateurTache=" + utilisateurTache + ", typeTache=" + typeTache + ", tachemax: "+ idTacheMax +"]";

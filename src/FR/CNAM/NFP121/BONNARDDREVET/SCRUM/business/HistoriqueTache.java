@@ -77,11 +77,13 @@ public class HistoriqueTache implements Serializable {
 	 */
 	
 	/**
-	 * Constructeur de la classe HistoriqueTache ayant pour parametre
+	 * Constructeur de la classe HistoriqueTache
 	 * 
 	 * 
 	 * @param tacheEnCours
+	 * 		fait reference à la tache en cours
 	 * @param statusEnCours
+	 * 		fait referenceau status en cours de la tache
 	 */
 	
 	
@@ -97,6 +99,15 @@ public class HistoriqueTache implements Serializable {
 	/*
 	 * Constructeur complet
 	 */
+	
+	
+	/**
+	 * Constructeur complet pour la classe HistoriqueTache avec tout les attributs
+	 * @param tacheEnCours
+	 * @param dateDebut
+	 * @param dateFin
+	 * @param statusEnCours
+	 */
 	public HistoriqueTache(Tache tacheEnCours, Date dateDebut, Date dateFin, Status statusEnCours) {
 		super();
 		this.tacheEnCours = tacheEnCours;
@@ -107,6 +118,14 @@ public class HistoriqueTache implements Serializable {
 	
 	/*
 	 * Constructeur sans date de fin
+	 */
+	
+	/**
+	 * Constructeur de la classe HistoriqueTache sans l'attribut dateFin
+	 * 
+	 * @param tacheEnCours
+	 * @param dateDebut
+	 * @param statusEnCours
 	 */
 	public HistoriqueTache(Tache tacheEnCours, Date dateDebut, Status statusEnCours) {
 		super();

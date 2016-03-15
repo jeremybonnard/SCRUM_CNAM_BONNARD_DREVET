@@ -2,6 +2,21 @@ package FR.CNAM.NFP121.BONNARDDREVET.SCRUM.business;
 
 import java.io.Serializable;
 
+/**
+ * 
+ * @author Vincent
+ *
+ *Classe Status Decrivant le status d'une tache
+ *Cette classe implémente l'interface serializable
+ *Elle dispose de 2 attributs:
+ *		- idStatus
+ *		- nom Status
+ *
+ *
+ */
+
+
+
 public class Status implements Serializable {
 	
 	
@@ -29,6 +44,14 @@ public class Status implements Serializable {
 	
 	/*
 	 * Constructeur complet
+	 */
+	
+	/**
+	 * Constructeur complet de la classe Status
+	 * @param idStatus
+	 * 		Fait reference à l'id du status
+	 * @param nomStatus
+	 * 		Fait reference au nom du status
 	 */
 	public Status(int idStatus, String nomStatus) {
 		super();
