@@ -86,8 +86,15 @@ public class UtilisateurUtil {
 	public static void ajoutTacheUtilisateur(Utilisateur unUtilisateur, Tache uneTache)
 	{
 		List<Tache> listeTache = new ArrayList<Tache>();
-		listeTache.addAll(unUtilisateur.getTachesUtilisateur());
-		listeTache.add(uneTache);
+		if(unUtilisateur.getTachesUtilisateur()==null){
+			listeTache.add(uneTache);
+		}
+		else{
+			listeTache.addAll(unUtilisateur.getTachesUtilisateur());
+			listeTache.add(uneTache);
+		}
+		
+		
 		Utilisateur nouveauUtilisateur = null;
 		try {
 			nouveauUtilisateur = unUtilisateur.clone();
