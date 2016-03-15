@@ -124,7 +124,8 @@ public class AjoutUtilisateur extends JFrame {
 						{
 							if(JTextEmail.getText().matches("^(.*)@(.*)\\.(.{2,4})$")){
 								//Date dateEntreUtilisateur = JCalendarDateNaissance.getDate();
-								if(JCalendarDateNaissance.getDate() == null)
+								Date datedujour = new Date();
+								if(JCalendarDateNaissance.getDate() == null || JCalendarDateNaissance.getDate().after(datedujour))
 								{
 									JOptionPane erreurAbsenceText = new JOptionPane();
 									erreurAbsenceText.showMessageDialog(erreurAbsenceText, "Date de naissance manquante ou invalide", "Erreur", JOptionPane.WARNING_MESSAGE);
