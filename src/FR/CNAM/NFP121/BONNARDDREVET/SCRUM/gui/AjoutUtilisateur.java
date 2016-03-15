@@ -98,6 +98,7 @@ public class AjoutUtilisateur extends JFrame {
 		
 		btnValider.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+			
 				
 				if(JTextNom.getText().equals(""))
 				{
@@ -165,8 +166,12 @@ public class AjoutUtilisateur extends JFrame {
 					
 				}
 				
-				
-				
+				/*
+				JOptionPane validationEnregistrement = new JOptionPane();
+				validationEnregistrement.showMessageDialog(validationEnregistrement, "Enregistrement effectué avec succès","Succès de l'enregistrement", JOptionPane.INFORMATION_MESSAGE);
+				FenetreUtil.actualiserUtilisateur();
+				dispose();
+				*/
 				
 				
 				

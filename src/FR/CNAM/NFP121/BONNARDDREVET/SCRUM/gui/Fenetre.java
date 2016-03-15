@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import FR.CNAM.NFP121.BONNARDDREVET.SCRUM.business.TypeTache;
+import FR.CNAM.NFP121.BONNARDDREVET.SCRUM.dao.FenetreUtil;
 
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
@@ -25,6 +26,10 @@ public class Fenetre extends JFrame {
 
 	private JPanel contentPane;
 	public static Fenetre fenetreMere;
+	private JMenu mnFichier;
+	private JMenu mnEquipe;
+	private JMenu mnTche;
+	private JMenu mnAPropos;
 	/**
 	 * Launch the application.
 	 */
@@ -52,7 +57,7 @@ public class Fenetre extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
-		JMenu mnFichier = new JMenu("Fichier");
+		mnFichier = new JMenu("Fichier");
 		menuBar.add(mnFichier);
 		
 		JMenuItem mntmSauvegarder = new JMenuItem("Sauvegarder");
@@ -68,24 +73,12 @@ public class Fenetre extends JFrame {
 		});
 		mnFichier.add(mntmQuitter);
 		
-		JMenu mnEquipe = new JMenu("Equipe");
+		mnEquipe = new JMenu("Equipe");
 		menuBar.add(mnEquipe);
 		
-		JMenuItem mntmAjoutUtilisateur = new JMenuItem("Ajout Utilisateur");
-		mntmAjoutUtilisateur.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				AjoutUtilisateur nvUtilisateur = new AjoutUtilisateur();
-				nvUtilisateur.setVisible(true);
-				
-				
-				
-				
-			}
-		});
-		mnEquipe.add(mntmAjoutUtilisateur);
+		FenetreUtil.actualiserUtilisateur();
 		
-		JMenu mnTche = new JMenu("T\u00E2che");
+		mnTche = new JMenu("T\u00E2che");
 		menuBar.add(mnTche);
 		
 		JMenuItem mntmNouvelleFonctionnalit = new JMenuItem("Nouvelle Fonctionnalit\u00E9");
@@ -110,7 +103,7 @@ public class Fenetre extends JFrame {
 		JMenuItem mntmNouveauSpike = new JMenuItem("Nouveau Spike");
 		mnTche.add(mntmNouveauSpike);
 		
-		JMenu mnAPropos = new JMenu("A propos");
+		mnAPropos = new JMenu("A propos");
 		menuBar.add(mnAPropos);
 		
 		JMenuItem mntmAPropos = new JMenuItem("A propos");
@@ -137,4 +130,16 @@ public class Fenetre extends JFrame {
 		setContentPane(contentPane);
 	}
 
+	public JMenu getMenuFichier() {
+		return mnFichier;
+	}
+	public JMenu getMenuEquipe() {
+		return mnEquipe;
+	}
+	public JMenu getMenuTache() {
+		return mnTche;
+	}
+	public JMenu getMenuAPropos() {
+		return mnAPropos;
+	}
 }

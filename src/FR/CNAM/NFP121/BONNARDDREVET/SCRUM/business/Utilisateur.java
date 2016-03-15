@@ -17,7 +17,7 @@ public class Utilisateur implements Serializable {
 	private String prenomUtilisateur;
 	private String mailUtilisateur;
 	private Date naissanceUtilisateur;
-	private List<Tache> tachesUtilisateur;
+	private List<Tache> tachesUtilisateur = null;
 	
 	
 	/*
