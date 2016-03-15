@@ -11,7 +11,7 @@ public class Utilisateur implements Serializable , Cloneable {
 	 *Variables
 	 *
 	 */
-	private static int idUtilisateurMax;
+	public static int idUtilisateurMax;
 	private int idUtilisateur;
 	private String nomUtilisateur;
 	private String prenomUtilisateur;

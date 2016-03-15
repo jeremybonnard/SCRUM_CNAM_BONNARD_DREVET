@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Tache implements Serializable{
 	
-	private static int idTacheMax;
+	public static int idTacheMax;
 	private int idTache;
 	private String nomTache;
 	private Status statusEnCours;
