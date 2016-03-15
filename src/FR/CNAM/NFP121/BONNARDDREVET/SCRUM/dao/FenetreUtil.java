@@ -8,6 +8,7 @@ import java.util.List;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.table.TableModel;
 
 import FR.CNAM.NFP121.BONNARDDREVET.SCRUM.business.Tache;
 import FR.CNAM.NFP121.BONNARDDREVET.SCRUM.business.Utilisateur;
@@ -67,7 +68,10 @@ public class FenetreUtil {
 	}
 	
 	public static void actualiserTache(){
-
-		//A FAIRE 
+		TableModel dataModelTache = new AbstractTableModel(){
+			
+		};
+		
+		Fenetre.fenetreMere.getTableTache().setModel(dataModelTache);
 	}
 }

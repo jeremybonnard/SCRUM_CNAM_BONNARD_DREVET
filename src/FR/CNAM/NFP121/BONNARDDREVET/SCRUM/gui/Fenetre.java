@@ -37,7 +37,7 @@ public class Fenetre extends JFrame {
 	private JMenu mnEquipe;
 	private JMenu mnTche;
 	private JMenu mnAPropos;
-	private JTable table;
+	private JTable tableTache;
 	/**
 	 * Launch the application.
 	 */
@@ -165,10 +165,10 @@ public class Fenetre extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		List<Tache> allTache = TacheUtils.allTaches();
-		table = new JTable(allTache.size()+1,4);
-		table.setRowSelectionAllowed(false);
-		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		table.setModel(new DefaultTableModel(
+		tableTache = new JTable(allTache.size()+1,4);
+		tableTache.setRowSelectionAllowed(false);
+		tableTache.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		tableTache.setModel(new DefaultTableModel(
 			new Object[][] {
 				{"A Faire", "En Cours", "En Test", "Fini"},
 				{null, null, null, null},
@@ -177,11 +177,11 @@ public class Fenetre extends JFrame {
 				"A", "B", "C", "D"
 			}
 		));
-		table.setToolTipText("");
+		tableTache.setToolTipText("");
 		
-		table.setBounds(28, 11, 375, 80);
+		tableTache.setBounds(27, 11, 376, 80);
 		
-		contentPane.add(table);
+		contentPane.add(tableTache);
 	}
 
 	public JMenu getMenuFichier() {
