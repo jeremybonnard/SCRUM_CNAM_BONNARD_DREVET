@@ -91,8 +91,9 @@ public class Fenetre extends JFrame {
 		
 		JMenuItem mntmNouvelleFonctionnalit = new JMenuItem("Nouvelle Fonctionnalit\u00E9");
 		mntmNouvelleFonctionnalit.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent e) {
-				TypeTache typeTacheCreationEnCours = new TypeTache(0, "Fonctionnalitee","#00000");
+				TypeTache typeTacheCreationEnCours = new TypeTache(0, "Fonctionnalitee","#4040A4");
 				AjoutTache nvAjoutTache = new AjoutTache(typeTacheCreationEnCours);
 				nvAjoutTache.setVisible(true);
 				
@@ -103,12 +104,39 @@ public class Fenetre extends JFrame {
 		mnTche.add(mntmNouvelleFonctionnalit);
 		
 		JMenuItem mntmNouvelleAmlioration = new JMenuItem("Nouvelle Am\u00E9lioration");
+		mntmNouvelleAmlioration.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent arg0) {
+				
+				TypeTache typeTacheCreationEnCours = new TypeTache(1,"Amélioration","#40A451");
+				AjoutTache nvAjoutTache = new AjoutTache(typeTacheCreationEnCours);
+				nvAjoutTache.setVisible(true);
+			}
+		});
 		mnTche.add(mntmNouvelleAmlioration);
 		
 		JMenuItem mntmNouveauBug = new JMenuItem("Nouveau Bug");
+		mntmNouveauBug.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				TypeTache typeTacheCreationEnCours = new TypeTache(1,"Bug","#C03000");
+				AjoutTache nvAjoutTache = new AjoutTache(typeTacheCreationEnCours);
+				nvAjoutTache.setVisible(true);
+				
+			}
+		});
 		mnTche.add(mntmNouveauBug);
 		
 		JMenuItem mntmNouveauSpike = new JMenuItem("Nouveau Spike");
+		mntmNouveauSpike.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				TypeTache typeTacheCreationEnCours = new TypeTache(1,"Spike","#4A1A2C");
+				AjoutTache nvAjoutTache = new AjoutTache(typeTacheCreationEnCours);
+				nvAjoutTache.setVisible(true);
+				
+			}
+		});
 		mnTche.add(mntmNouveauSpike);
 		
 		mnAPropos = new JMenu("A propos");

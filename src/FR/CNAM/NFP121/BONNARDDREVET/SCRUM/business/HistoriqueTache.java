@@ -3,6 +3,25 @@ package FR.CNAM.NFP121.BONNARDDREVET.SCRUM.business;
 import java.io.Serializable;
 import java.util.Date;
 
+
+/**
+ * 
+ * @author Vincent
+ * 
+ * HistoriqueTache est la classe représentant l'historique d'une tache.
+ * Elle implémente l'interface Serializable
+ * Elle dispose de 4 attributs:
+ * 		- tacheEnCours de type Tache
+ * 		- dateDebut de type Date
+ * 		- dateFin de type Date
+ *  	- statuEnCours de type Status
+ * 
+ * 
+ *
+ */
+
+
+
 public class HistoriqueTache implements Serializable {
 	
 	private Tache tacheEnCours;
@@ -44,6 +63,10 @@ public class HistoriqueTache implements Serializable {
 	/*
 	 * Constructeur Vide
 	 */
+	
+	/**
+	 * Constructeur Vide de la classe HistoriqueTache
+	 */
 	public HistoriqueTache() {
 		super();
 	}
@@ -52,6 +75,17 @@ public class HistoriqueTache implements Serializable {
 	/*
 	 * Constructeur sans date
 	 */
+	
+	/**
+	 * Constructeur de la classe HistoriqueTache ayant pour parametre
+	 * 
+	 * 
+	 * @param tacheEnCours
+	 * @param statusEnCours
+	 */
+	
+	
+	
 	public HistoriqueTache(Tache tacheEnCours, Status statusEnCours) {
 		super();
 		this.tacheEnCours = tacheEnCours;

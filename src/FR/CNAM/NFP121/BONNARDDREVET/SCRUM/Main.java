@@ -9,6 +9,17 @@ import FR.CNAM.NFP121.BONNARDDREVET.SCRUM.dao.UtilisateurUtil;
 import FR.CNAM.NFP121.BONNARDDREVET.SCRUM.gui.AjoutUtilisateur;
 import FR.CNAM.NFP121.BONNARDDREVET.SCRUM.gui.Fenetre;
 
+/**
+ * @author Vincent Drevet / Jeremy Bonnard
+ * 
+ * Point d'entré de notre programme
+ * 
+ * Cette Classe appelle la classe Fenetre qui représente la fenetre principale de notre programme
+ *
+ */
+
+
+
 public class Main {
 
 	public static void main(String[] args) {
