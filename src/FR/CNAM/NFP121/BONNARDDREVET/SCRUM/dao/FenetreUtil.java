@@ -15,7 +15,23 @@ import FR.CNAM.NFP121.BONNARDDREVET.SCRUM.business.Utilisateur;
 import FR.CNAM.NFP121.BONNARDDREVET.SCRUM.gui.AjoutUtilisateur;
 import FR.CNAM.NFP121.BONNARDDREVET.SCRUM.gui.Fenetre;
 
+/**
+ * Classe FenetreUtil permettant la manipulation de la fenetre principal et tous ces éléments
+ * Cette classe Comporte 2 methodes:
+ * 	- actualiserUtilisateur
+ * 	- actualiserTacher
+ */
+
+
+
 public class FenetreUtil {
+	
+	/**
+	 *La methode actualiserUtilisateur permet de mettre à jour la barre d'outils "Equipe" et d'y ajouter le nom de l'utilisateur venant d'etre enregistrer au menu.
+	 *elle gere aussi l'affichage des propriétés affecté à lutilisateur (nom,prenom,tache confiée)
+	 */
+	
+	
 
 	public static void actualiserUtilisateur()
 	{
@@ -66,6 +82,11 @@ public class FenetreUtil {
 			MenuEquipe.add(menuUtilisateur);
 		}
 	}
+	
+	
+	
+	
+
 	
 	public static void actualiserTache(){
 		TableModel dataModelTache = new AbstractTableModel(){
