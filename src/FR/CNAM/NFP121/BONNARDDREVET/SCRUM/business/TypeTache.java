@@ -2,6 +2,18 @@ package FR.CNAM.NFP121.BONNARDDREVET.SCRUM.business;
 
 import java.io.Serializable;
 
+/**
+ * Classe TypeTache décrivant le type d'une tache
+ * Cette classe implemente l'interface serializable
+ * elle dispose de 3 attributs:
+ * 	- idTypeTache
+ * 	- nomTypeTache
+ * 	-couleurTypeTache
+ */
+
+
+
+
 public class TypeTache implements Serializable {
 
 	private int idTypeTache;
@@ -34,6 +46,13 @@ public class TypeTache implements Serializable {
 	/*
 	 * Constructeur Vide
 	 */
+	 
+
+	/**
+ 	* Constructeur vide de la classe TypeTache
+	*/
+	 
+	 
 	public TypeTache() {
 		super();
 	}
@@ -42,6 +61,19 @@ public class TypeTache implements Serializable {
 	/*
 	 * Constructeur complet
 	 */
+	 
+	 
+	 /**
+	  * Constructeur complet de la classe TypeTache
+	  * 
+	  * @param idTypeTache
+	  * 	numero de la tache
+	  * @param nomTypeTache
+	  * 	nom de la tache
+	  * @param couleurTypeTache
+	  * 	couleur en hexadecimal de la tache
+	  * 
+	  */
 	public TypeTache(int idTypeTache, String nomTypeTache, String couleurTypeTache) {
 		super();
 		this.idTypeTache = idTypeTache;
