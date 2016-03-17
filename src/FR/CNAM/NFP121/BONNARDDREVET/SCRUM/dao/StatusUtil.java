@@ -12,6 +12,7 @@ public class StatusUtil {
 	 * Cette méthode definit l'id et l'action a effectuer initialement
 	 * @return Statuc(0,"A Faire")
 	 * 	retourn l'id et l'action de la tache créer
+	 */
 	
 	
 	public static Status getStatusDepart()
