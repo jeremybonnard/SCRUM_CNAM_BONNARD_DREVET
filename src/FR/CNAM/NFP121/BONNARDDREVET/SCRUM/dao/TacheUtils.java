@@ -13,7 +13,21 @@ import java.util.List;
 
 import FR.CNAM.NFP121.BONNARDDREVET.SCRUM.business.Tache;
 
+/** TacheUtils est la classe permettant d'interagir avec les objets Tache
+ * Elle est composée de 2 méthodes
+ */
+
+
 public class TacheUtils {
+	
+	
+	/** Méthode permettant d'enregistrer une tache créer dans un fichier binaire
+	 * @param unTache
+	 * 	une instance d'une classe Tache
+	 * @return False
+	 * 	retour false en cas d'erreur
+	 */
+	 
 	public static boolean enregistrerTache(Tache unTache){
 		ObjectOutputStream ObjectOutput = null;
 		List<Tache> allTaches = allTaches();
@@ -37,6 +51,14 @@ public class TacheUtils {
 	/*
 	 * Fonction de recuperation de tout les Taches.
 	 */
+	 
+	 
+	 /** methode permettant la récuperation de toute les taches crées
+	  * 
+	  * @return allTaches
+	  * 	retourne toutes les taches qui ont été chargé depuis le fichier binaire
+	  */
+	  
 	public static List<Tache> allTaches(){
 		List<Tache> allTaches = new ArrayList<Tache>();
 		File fichier1 = new File("lesTaches.ser");
