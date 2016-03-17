@@ -4,6 +4,22 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+
+
+/**
+ *Classe Utilisateur Decrivant un utilisateur
+ *Cette classe implémente l'interface serializable
+  *Elle dispose de 7 attributs
+  *	- idUtilisateurMax
+  * 	- idUtilisateur
+  * 	- nomUtilisateur
+  * 	- prenomUtilisateur
+  * 	- mailUtilisateur
+  * 	- naissanceUtilisateur
+  * 	- tacheUtilisateur
+  * ATTENTION l'attribut idUtilisateurMax est public
+
+
 public class Utilisateur implements Serializable , Cloneable {
 
 	/*
@@ -74,6 +90,23 @@ public class Utilisateur implements Serializable , Cloneable {
 	/*
 	 * Constructeur utilisateur complet sans tache.
 	 */
+	 
+	 
+	 /**
+	  * Constructeur de la classe Utilisateur sans affectation de tache
+	  * @param idUtilisateur
+	  * 	numero utilisateur
+	  * @param nomUtilisateur
+	  * 	nomutilisateur
+	  * @param prenomUtilisateur
+	  * 	prenomUtilisateur
+	  * @param mailUtilisateur
+	  * 	mailUtilisateur
+	  * @param naissanceUtilisateur
+	  * 	date de naissanceUtilisateur
+	  * 
+	  * le constructeur incremente l'attribut idUtilisateurMax
+	  */
 	
 	public Utilisateur( String nomUtilisateur, String prenomUtilisateur, String mailUtilisateur,
 			Date naissanceUtilisateur) {
@@ -91,7 +124,10 @@ public class Utilisateur implements Serializable , Cloneable {
 	 * Constructeur vide
 	 */
 	
-	
+	/**
+	 * Constructeur vide de la classe Utilisateur
+	 * incremente l'attribut idUtilisateurMax à chaque appelle
+	 */
 	
 	public Utilisateur() {
 		super();
@@ -104,6 +140,24 @@ public class Utilisateur implements Serializable , Cloneable {
 	/*
 	 * Constructeur complet avec tache personne
 	 */
+	 
+	 /**
+	  * Construcuteur complet de la classe Utilisateur
+	  * @param idUtilisateur
+	  * 	numero utilisateur
+	  * @param nomUtilisateur
+	  * 	nom utilisateur
+	  * @param prenomUtilisateur
+	  * 	prenom utilisateur
+	  * @param mailUtilisateur
+	  * 	mail utilisateur
+	  * @param naissanceUtilisateur
+	  * 	date de naissance utilisateur
+	  * @param tachesUtilisateur
+	  * 	tache affectée à l'utilisateur
+	  * Incrementation de l'attribut idUtilisateurMax à chaque appel
+	  */
+	 
 	
 	public Utilisateur(int idUtilisateur, String nomUtilisateur, String prenomUtilisateur, String mailUtilisateur,
 			Date naissanceUtilisateur, List<Tache> tachesUtilisateur) {
@@ -116,6 +170,19 @@ public class Utilisateur implements Serializable , Cloneable {
 		this.tachesUtilisateur = tachesUtilisateur;
 		Utilisateur.idUtilisateurMax++;
 	}
+	
+	
+	/**
+	 * Methode toString permettant de renvoyer sous forme de texte les attributs de la classe
+	 * 
+	 * @return idutilisateur
+	 * @return nomUtilisateur
+	 * @return prenomUtilisateur
+	 * @return mailUtilisateur
+	 * @return naissanceUtilisateur
+	 * @return tacheUtilisateur
+	 */
+	
 	@Override
 	public String toString() {
 		return "Utilisateur [idUtilisateur=" + idUtilisateur + ", nomUtilisateur=" + nomUtilisateur
