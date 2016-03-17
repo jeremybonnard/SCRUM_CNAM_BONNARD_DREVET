@@ -14,10 +14,27 @@ import java.util.List;
 import FR.CNAM.NFP121.BONNARDDREVET.SCRUM.business.Tache;
 import FR.CNAM.NFP121.BONNARDDREVET.SCRUM.business.Utilisateur;
 
+/** UtilisateursUtil est la classe permettant la manipulation des objets utilisateur.
+ *
+ * elle comporte 5 methodes
+ * 
+ */
+
+
 public class UtilisateurUtil {
 	/*
 	 * Fonction de sauvegarde d'un utilisateur
 	 */
+	 
+	 
+	 /**
+	  * méthode permettant la sauvegarde d'un utilisateur dans un fichier binaire
+	  * @param unUtilisateur
+	  * 	Prend en parametre une instance de la classe Utilisateur
+	  * @return false
+	  * 	retourne faut si probleme
+	  */
+	  
 	public static boolean enregistrerUtilisateur(Utilisateur unUtilisateur){
 		ObjectOutputStream ObjectOutput = null;
 		List<Utilisateur> allUtilisateurs = allUtilisateurs();
@@ -41,6 +58,16 @@ public class UtilisateurUtil {
 	/*
 	 * Fonction de recuperation de tout les utilisateurs.
 	 */
+	 
+	 
+	 /**
+	  * Methode permettant de recupérer les utilisateurs qui sont présent dans le fichier binaire
+	  * @return allUtilisateur
+	  * 	retourne une collection contenant tous les utilisateurs enregistrer
+	  */
+	 
+	 
+	 
 	public static List<Utilisateur> allUtilisateurs(){
 		List<Utilisateur> allUtilisateurs = new ArrayList<Utilisateur>();
 		File fichier1 = new File("lesUtilisateurs.ser");
@@ -68,7 +95,23 @@ public class UtilisateurUtil {
 		return allUtilisateurs;
 	}
 	
+	
+	
+	
 	// getUtilisateurParNomPrenom renvoie un utilisateur grace a son nom prenom
+	
+	
+	/**
+	 * Methode permettant de rechercher et de retrouver un utilisateur via son nom et son prenom
+	 * @param nomPrenom
+	 * 	nom et prénom de la personne
+	 * @return utilisateurcherche
+	 * 	retourne l'utilisateur correspondant au nom et au prénom
+	 */
+	 
+	
+	
+	
 	public static Utilisateur getUtilisateurParNomPrenom( String nomPrenom )
 	{
 		String[] tableauNomPrenom = nomPrenom.split("  ");
@@ -83,6 +126,16 @@ public class UtilisateurUtil {
 		return utilisateurcherche;
 	}
 	
+	
+	
+	
+	/**
+	 * Methode permettant l'ajout d'un utilisateur
+	 * @param unUtilisateur
+	 * 	Prend en parametre une instance de la classe Utilisateur
+	 * @param uneTache
+	 * 	Prend en parametre une instance de la classe Tache
+	 */
 	public static void ajoutTacheUtilisateur(Utilisateur unUtilisateur, Tache uneTache)
 	{
 		List<Tache> listeTache = new ArrayList<Tache>();
@@ -108,6 +161,18 @@ public class UtilisateurUtil {
 		UtilisateurUtil.modifierUtilisateur(unUtilisateur, nouveauUtilisateur);
 		
 	}
+	
+	
+	/**
+	 * methode permettant la modification d'un utilisateur en le supprimant et en créant un autre
+	 * @param ancienUtilisateur
+	 * 	Prend en parametre une instance de la classe Utilisateur faisant reference à un ancien utilisateur
+	 * @param nouveauUtilisateur
+	 * 	Prend en paramtre une instance de la classe Utilisateur faisant reference au nouveau utilisateur
+	 */
+	
+	
+	
 	
 	public static void modifierUtilisateur(Utilisateur ancienUtilisateur, Utilisateur nouveauUtilisateur)
 	{
