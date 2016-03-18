@@ -17,8 +17,9 @@ import java.util.List;
   * 	- mailUtilisateur
   * 	- naissanceUtilisateur
   * 	- tacheUtilisateur
+  *
   * ATTENTION l'attribut idUtilisateurMax est public
-
+*/
 
 public class Utilisateur implements Serializable , Cloneable {
 
