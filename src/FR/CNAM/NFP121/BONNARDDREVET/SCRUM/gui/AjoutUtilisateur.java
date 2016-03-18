@@ -11,12 +11,15 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JFormattedTextField;
 import com.toedter.calendar.JDateChooser;
 
 import FR.CNAM.NFP121.BONNARDDREVET.SCRUM.business.Utilisateur;
+import FR.CNAM.NFP121.BONNARDDREVET.SCRUM.dao.EmailValidator;
 import FR.CNAM.NFP121.BONNARDDREVET.SCRUM.dao.FenetreUtil;
 import FR.CNAM.NFP121.BONNARDDREVET.SCRUM.dao.UtilisateurUtil;
 
@@ -123,7 +126,9 @@ public class AjoutUtilisateur extends JFrame {
 						}
 						else
 						{
-							if(JTextEmail.getText().matches("^(.*)@(.*)\\.(.{2,4})$")){
+							List<EmailValidator> emailValidator = Collections.<EmailValidator>singletonList(new EmailValidator());
+							
+							if(emailValidator.get(0).estValide(JTextEmail.getText())){
 								//Date dateEntreUtilisateur = JCalendarDateNaissance.getDate();
 								Date datedujour = new Date();
 								if(JCalendarDateNaissance.getDate() == null || JCalendarDateNaissance.getDate().after(datedujour))

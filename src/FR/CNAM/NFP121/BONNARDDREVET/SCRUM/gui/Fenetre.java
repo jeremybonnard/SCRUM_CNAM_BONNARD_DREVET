@@ -19,6 +19,7 @@ import javax.swing.JOptionPane;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.util.List;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -168,10 +169,20 @@ public class Fenetre extends JFrame {
 		tableTache = new JTable(allTache.size()+1,4);
 		tableTache.setRowSelectionAllowed(false);
 		tableTache.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		List<String> status = new ArrayList<String>();
+		status.add("A Faire");
+		status.add("2");
+		status.add("3");
+		for(int i =0; i<5; i++){
+			
+		}
 		tableTache.setModel(new DefaultTableModel(
-			new Object[][] {
-				{"A Faire", "En Cours", "En Test", "Fini"},
-				{null, null, null, null},
+				
+				new Object[][] {
+				status.toArray(),
+				
+				{null, null, null},
+				{"Ligne3", null,null},
 			},
 			new String[] {
 				"A", "B", "C", "D"
