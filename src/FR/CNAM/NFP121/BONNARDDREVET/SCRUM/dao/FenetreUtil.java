@@ -92,6 +92,13 @@ public class FenetreUtil {
 	//placement des taches sur le tableau
 
 	
+	/**
+	 * Methode permettant d'actualiser les données du tableau
+	 * 
+	 */
+	
+	
+	
 	public static void actualiserTache(){
 		
 
