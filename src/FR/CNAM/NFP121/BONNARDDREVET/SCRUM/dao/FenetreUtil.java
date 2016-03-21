@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableModel;
 
 import FR.CNAM.NFP121.BONNARDDREVET.SCRUM.business.Tache;
@@ -117,6 +118,7 @@ public class FenetreUtil {
 			{
 				tacheGUI[] ligneTache = {new tacheGUI(uneTache.getNomTache(),true), new tacheGUI("",false),new tacheGUI("",false),new tacheGUI("",false)};
 				tableauDesTaches.add(ligneTache);
+				
 			}
 			else if(uneTache.getStatusEnCours().getIdStatus()==2)
 			{
