@@ -113,8 +113,11 @@ public class FenetreUtil {
 		Fenetre.fenetreMere.getJPanelFini().removeAll();
 		
 		Iterator i = allTaches.iterator();
+		int iter = 0;
 		while(i.hasNext())
 		{
+			System.out.println(iter);
+			iter++;
 			Tache uneTache = (Tache) i.next();
 			if(uneTache.getStatusEnCours().getIdStatus()==1)
 			{
@@ -132,16 +135,9 @@ public class FenetreUtil {
 						}
 						else
 						{
-							Tache nouveauTache = null;
-							try {
-								nouveauTache = uneTache.clone();
-							} catch (CloneNotSupportedException a) {
-								// TODO Auto-generated catch block
-								a.printStackTrace();
-							}
-							
-							nouveauTache.setStatusEnCours(StatusUtil.getStatusEnCours());
-							TacheUtils.modifiertache(uneTache, nouveauTache);
+							int idTache = allTaches.indexOf(uneTache);
+							uneTache.setStatusEnCours(StatusUtil.getStatusEnCours());
+							TacheUtils.modifiertache(idTache, uneTache);
 							FenetreUtil.actualiserTache();
 						}
 					}
@@ -165,29 +161,15 @@ public class FenetreUtil {
 						else
 						{
 							if(retourdialog == 1){
-								Tache nouveauTache = null;
-								try {
-									nouveauTache = uneTache.clone();
-								} catch (CloneNotSupportedException a) {
-									// TODO Auto-generated catch block
-									a.printStackTrace();
-								}
-								
-								nouveauTache.setStatusEnCours(StatusUtil.getStatusEnTest());
-								TacheUtils.modifiertache(uneTache, nouveauTache);
+								int idTache = allTaches.indexOf(uneTache);
+								uneTache.setStatusEnCours(StatusUtil.getStatusEnTest());
+								TacheUtils.modifiertache(idTache, uneTache);
 								FenetreUtil.actualiserTache();
 							}
 							else if(retourdialog == 2){
-								Tache nouveauTache = null;
-								try {
-									nouveauTache = uneTache.clone();
-								} catch (CloneNotSupportedException a) {
-									// TODO Auto-generated catch block
-									a.printStackTrace();
-								}
-								
-								nouveauTache.setStatusEnCours(StatusUtil.getStatusDepart());
-								TacheUtils.modifiertache(uneTache, nouveauTache);
+								int idTache = allTaches.indexOf(uneTache);
+								uneTache.setStatusEnCours(StatusUtil.getStatusDepart());
+								TacheUtils.modifiertache(idTache, uneTache);
 								FenetreUtil.actualiserTache();
 							}
 							else 
@@ -217,29 +199,15 @@ public class FenetreUtil {
 						else
 						{
 							if(retourdialog == 1){
-								Tache nouveauTache = null;
-								try {
-									nouveauTache = uneTache.clone();
-								} catch (CloneNotSupportedException a) {
-									// TODO Auto-generated catch block
-									a.printStackTrace();
-								}
-								
-								nouveauTache.setStatusEnCours(StatusUtil.getStatusFini());
-								TacheUtils.modifiertache(uneTache, nouveauTache);
+								int idTache = allTaches.indexOf(uneTache);
+								uneTache.setStatusEnCours(StatusUtil.getStatusFini());
+								TacheUtils.modifiertache(idTache, uneTache);
 								FenetreUtil.actualiserTache();
 							}
 							else if(retourdialog == 2){
-								Tache nouveauTache = null;
-								try {
-									nouveauTache = uneTache.clone();
-								} catch (CloneNotSupportedException a) {
-									// TODO Auto-generated catch block
-									a.printStackTrace();
-								}
-								
-								nouveauTache.setStatusEnCours(StatusUtil.getStatusEnCours());
-								TacheUtils.modifiertache(uneTache, nouveauTache);
+								int idTache = allTaches.indexOf(uneTache);
+								uneTache.setStatusEnCours(StatusUtil.getStatusEnCours());
+								TacheUtils.modifiertache(idTache, uneTache);
 								FenetreUtil.actualiserTache();
 							}
 							else 

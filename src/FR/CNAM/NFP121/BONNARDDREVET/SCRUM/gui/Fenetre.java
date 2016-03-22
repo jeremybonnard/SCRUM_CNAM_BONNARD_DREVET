@@ -40,12 +40,10 @@ public class Fenetre extends JFrame {
 	private JMenu mnEquipe;
 	private JMenu mnTche;
 	private JMenu mnAPropos;
-	private JTable tableTache;
 	private JPanel JPanelAFaire;
 	private JPanel JPanelEnCours;
 	private JPanel JPanelEnTest;
 	private JPanel JPanelFini;
-	private JLabel lblTest_1;
 	/**
 	 * Launch the application.
 	 */
@@ -173,9 +171,6 @@ public class Fenetre extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		List<Tache> allTache = TacheUtils.allTaches();
-		tableTache = new JTable(allTache.size()+1,4);
-		tableTache.setRowSelectionAllowed(false);
-		tableTache.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		List<String> status = new ArrayList<String>();
 		status.add("A Faire");
 		status.add("2");
@@ -183,40 +178,25 @@ public class Fenetre extends JFrame {
 		for(int i =0; i<5; i++){
 			
 		}
-		tableTache.setModel(new DefaultTableModel(
-				
-				new Object[][] {
-				status.toArray(),
-				
-				{null, null, null},
-				{"Ligne3", null,null},
-			},
-			new String[] {
-				"A", "B", "C", "D"
-			}
-		));
-		tableTache.setToolTipText("");
-		
-		tableTache.setBounds(27, 11, 376, 80);
-		
-		contentPane.add(tableTache);
 		
 		JPanelAFaire = new JPanel();
 		JPanelAFaire.setBounds(27, 104, 100, 115);
 		contentPane.add(JPanelAFaire);
 		JPanelAFaire.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		JLabel lblTest = new JLabel("Test");
+		JLabel lblTest = new JLabel("Rafraicisement");
 		lblTest.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				Fenetre.fenetreMere.getJPanelAFaire().removeAll();
+				Fenetre.fenetreMere.getJPanelEnCours().removeAll();
+				Fenetre.fenetreMere.getJPanelEnTest().removeAll();
+				Fenetre.fenetreMere.getJPanelFini().removeAll();
 				FenetreUtil.actualiserTache();
+				
 			}
 		});
 		JPanelAFaire.add(lblTest);
-		
-		lblTest_1 = new JLabel("Test2");
-		JPanelAFaire.add(lblTest_1);
 		
 		JPanelEnCours = new JPanel();
 		JPanelEnCours.setBounds(126, 104, 100, 115);
