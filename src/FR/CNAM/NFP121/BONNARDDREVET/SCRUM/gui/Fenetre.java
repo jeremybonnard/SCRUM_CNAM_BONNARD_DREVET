@@ -1,6 +1,7 @@
 package FR.CNAM.NFP121.BONNARDDREVET.SCRUM.gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -31,6 +32,10 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.ListSelectionModel;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
+import java.awt.Font;
+import java.awt.Window.Type;
+import javax.swing.border.BevelBorder;
+import javax.swing.JTextPane;
 
 public class Fenetre extends JFrame {
 
@@ -44,6 +49,10 @@ public class Fenetre extends JFrame {
 	private JPanel JPanelEnCours;
 	private JPanel JPanelEnTest;
 	private JPanel JPanelFini;
+	private JLabel lblAFaire;
+	private JLabel lblEnCours;
+	private JLabel lblEnTest;
+	private JLabel lblFini;
 	/**
 	 * Launch the application.
 	 */
@@ -64,9 +73,11 @@ public class Fenetre extends JFrame {
 	 * Create the frame.
 	 */
 	public Fenetre() {
+		setType(Type.UTILITY);
 		Fenetre.fenetreMere = this;
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 906, 474);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -99,7 +110,7 @@ public class Fenetre extends JFrame {
 		mntmNouvelleFonctionnalit.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				TypeTache typeTacheCreationEnCours = new TypeTache(0, "Fonctionnalitee","#4040A4");
+				TypeTache typeTacheCreationEnCours = new TypeTache(0, "Fonctionnalitee",Color.blue);
 				AjoutTache nvAjoutTache = new AjoutTache(typeTacheCreationEnCours);
 				nvAjoutTache.setVisible(true);
 				
@@ -114,7 +125,7 @@ public class Fenetre extends JFrame {
 			
 			public void actionPerformed(ActionEvent arg0) {
 				
-				TypeTache typeTacheCreationEnCours = new TypeTache(1,"Amélioration","#40A451");
+				TypeTache typeTacheCreationEnCours = new TypeTache(1,"Amélioration",Color.green);
 				AjoutTache nvAjoutTache = new AjoutTache(typeTacheCreationEnCours);
 				nvAjoutTache.setVisible(true);
 			}
@@ -125,7 +136,7 @@ public class Fenetre extends JFrame {
 		mntmNouveauBug.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				TypeTache typeTacheCreationEnCours = new TypeTache(1,"Bug","#C03000");
+				TypeTache typeTacheCreationEnCours = new TypeTache(1,"Bug",Color.orange);
 				AjoutTache nvAjoutTache = new AjoutTache(typeTacheCreationEnCours);
 				nvAjoutTache.setVisible(true);
 				
@@ -137,7 +148,7 @@ public class Fenetre extends JFrame {
 		mntmNouveauSpike.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				TypeTache typeTacheCreationEnCours = new TypeTache(1,"Spike","#4A1A2C");
+				TypeTache typeTacheCreationEnCours = new TypeTache(1,"Spike",Color.magenta);
 				AjoutTache nvAjoutTache = new AjoutTache(typeTacheCreationEnCours);
 				nvAjoutTache.setVisible(true);
 				
@@ -180,38 +191,51 @@ public class Fenetre extends JFrame {
 		}
 		
 		JPanelAFaire = new JPanel();
-		JPanelAFaire.setBounds(27, 104, 100, 115);
+		JPanelAFaire.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		JPanelAFaire.setBounds(27, 36, 200, 366);
 		contentPane.add(JPanelAFaire);
 		JPanelAFaire.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		JLabel lblTest = new JLabel("Rafraicisement");
-		lblTest.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				Fenetre.fenetreMere.getJPanelAFaire().removeAll();
-				Fenetre.fenetreMere.getJPanelEnCours().removeAll();
-				Fenetre.fenetreMere.getJPanelEnTest().removeAll();
-				Fenetre.fenetreMere.getJPanelFini().removeAll();
-				FenetreUtil.actualiserTache();
-				
-			}
-		});
-		JPanelAFaire.add(lblTest);
-		
 		JPanelEnCours = new JPanel();
-		JPanelEnCours.setBounds(126, 104, 100, 115);
+		JPanelEnCours.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		JPanelEnCours.setBounds(237, 36, 200, 366);
 		contentPane.add(JPanelEnCours);
 		JPanelEnCours.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		JPanelEnTest = new JPanel();
-		JPanelEnTest.setBounds(226, 104, 100, 115);
+		JPanelEnTest.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		JPanelEnTest.setBounds(447, 36, 200, 366);
 		contentPane.add(JPanelEnTest);
 		JPanelEnTest.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		JPanelFini = new JPanel();
-		JPanelFini.setBounds(324, 104, 100, 115);
+		JPanelFini.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		JPanelFini.setBounds(657, 36, 200, 366);
 		contentPane.add(JPanelFini);
 		JPanelFini.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		lblAFaire = new JLabel("A Faire ");
+		lblAFaire.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblAFaire.setBounds(91, 0, 74, 25);
+		contentPane.add(lblAFaire);
+		
+		lblEnCours = new JLabel("En Cours");
+		lblEnCours.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblEnCours.setBounds(306, 0, 85, 25);
+		contentPane.add(lblEnCours);
+		
+		lblEnTest = new JLabel("En Test");
+		lblEnTest.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblEnTest.setBounds(516, 1, 85, 23);
+		contentPane.add(lblEnTest);
+		
+		lblFini = new JLabel("Fini");
+		lblFini.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblFini.setBounds(734, 0, 85, 25);
+		contentPane.add(lblFini);
+		Fenetre.fenetreMere = this;
+		FenetreUtil.actualiserTache();
+
 	}
 
 	public JMenu getMenuFichier() {

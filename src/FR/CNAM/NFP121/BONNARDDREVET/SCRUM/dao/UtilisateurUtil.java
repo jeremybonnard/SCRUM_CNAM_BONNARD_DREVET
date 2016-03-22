@@ -140,13 +140,6 @@ public class UtilisateurUtil {
 	public static void ajoutTacheUtilisateur( Utilisateur unUtilisateur, Tache uneTache)
 	{
 		List<Tache> listeTache = new ArrayList<Tache>();
-		Iterator i = UtilisateurUtil.allUtilisateurs().iterator();
-		while( i.hasNext())
-		{
-			Utilisateur unUtilisateur2 = (Utilisateur) i.next();
-		}
-		System.out.println( UtilisateurUtil.allUtilisateurs().contains(unUtilisateur));
-//		System.out.println(idUtilisateur);
 		if(unUtilisateur.getTachesUtilisateur()==null){
 			listeTache.add(uneTache);
 		}
@@ -154,11 +147,7 @@ public class UtilisateurUtil {
 			listeTache.addAll(unUtilisateur.getTachesUtilisateur());
 			listeTache.add(uneTache);
 		}
-		
-		unUtilisateur.setTachesUtilisateur(listeTache);
-		
-		
-//		UtilisateurUtil.modifierUtilisateur(idUtilisateur, unUtilisateur);
+					UtilisateurUtil.modifierUtilisateur(unUtilisateur.getIdUtilisateur(), unUtilisateur);	
 		
 	}
 	

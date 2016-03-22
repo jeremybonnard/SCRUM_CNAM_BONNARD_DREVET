@@ -1,6 +1,7 @@
 package FR.CNAM.NFP121.BONNARDDREVET.SCRUM.gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -42,7 +43,7 @@ public class AjoutTache extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TypeTache tacheTest = new TypeTache(0,"Test","#FFFFFF");
+					TypeTache tacheTest = new TypeTache(0,"Test",Color.white);
 					AjoutTache frame = new AjoutTache(tacheTest);
 					frame.setVisible(true);
 				} catch (Exception e) {

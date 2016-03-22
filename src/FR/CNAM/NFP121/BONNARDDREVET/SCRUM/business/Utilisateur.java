@@ -21,7 +21,7 @@ import java.util.List;
   * ATTENTION l'attribut idUtilisateurMax est public
 */
 
-public class Utilisateur implements Serializable , Cloneable {
+public class Utilisateur implements Serializable , Cloneable, Comparable<Utilisateur>{
 
 	/*
 	 * 
@@ -192,7 +192,13 @@ public class Utilisateur implements Serializable , Cloneable {
 	
 	public Utilisateur clone() throws CloneNotSupportedException{ 
 	return (Utilisateur) super.clone(); 
+	}
+	@Override
+	public int compareTo(Utilisateur o) {
+		// TODO Auto-generated method stub
+		return this.getIdUtilisateur()-o.getIdUtilisateur();
 	} 
+	
 	
 	
 	

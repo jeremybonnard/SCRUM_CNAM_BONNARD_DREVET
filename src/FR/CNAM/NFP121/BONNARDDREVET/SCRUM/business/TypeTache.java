@@ -1,5 +1,6 @@
 package FR.CNAM.NFP121.BONNARDDREVET.SCRUM.business;
 
+import java.awt.Color;
 import java.io.Serializable;
 
 /**
@@ -18,7 +19,7 @@ public class TypeTache implements Serializable {
 
 	private int idTypeTache;
 	private String nomTypeTache;
-	private String couleurTypeTache;
+	private Color couleurTypeTache;
 	
 	
 	/*
@@ -36,10 +37,10 @@ public class TypeTache implements Serializable {
 	public void setNomTypeTache(String nomTypeTache) {
 		this.nomTypeTache = nomTypeTache;
 	}
-	public String getCouleurTypeTache() {
+	public Color getCouleurTypeTache() {
 		return couleurTypeTache;
 	}
-	public void setCouleurTypeTache(String couleurTypeTache) {
+	public void setCouleurTypeTache(Color couleurTypeTache) {
 		this.couleurTypeTache = couleurTypeTache;
 	}
 	
@@ -74,7 +75,7 @@ public class TypeTache implements Serializable {
 	  * 	couleur en hexadecimal de la tache
 	  * 
 	  */
-	public TypeTache(int idTypeTache, String nomTypeTache, String couleurTypeTache) {
+	public TypeTache(int idTypeTache, String nomTypeTache, Color couleurTypeTache) {
 		super();
 		this.idTypeTache = idTypeTache;
 		this.nomTypeTache = nomTypeTache;

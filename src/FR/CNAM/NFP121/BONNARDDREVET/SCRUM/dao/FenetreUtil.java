@@ -16,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JTextPane;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableModel;
 
@@ -121,7 +122,10 @@ public class FenetreUtil {
 			Tache uneTache = (Tache) i.next();
 			if(uneTache.getStatusEnCours().getIdStatus()==1)
 			{
-				JLabel labelinfo = new JLabel(uneTache.getNomTache());
+				JTextPane labelinfo = new JTextPane();
+				labelinfo.setFocusable(false);
+				labelinfo.setText(uneTache.getNomTache());
+				labelinfo.setBackground(uneTache.getTypeTache().getCouleurTypeTache());
 				String lesOptions[] = { "Afficher les info?","Mettre à l'états: En cours?"};
 				labelinfo.addMouseListener(new MouseAdapter() {
 					@Override
@@ -146,7 +150,10 @@ public class FenetreUtil {
 			}
 			else if(uneTache.getStatusEnCours().getIdStatus() ==2)
 			{
-				JLabel labelinfo = new JLabel(uneTache.getNomTache());
+				JTextPane labelinfo = new JTextPane();
+				labelinfo.setFocusable(false);
+				labelinfo.setText(uneTache.getNomTache());
+				labelinfo.setBackground(uneTache.getTypeTache().getCouleurTypeTache());
 				String lesOptions[] = { "Afficher les info?","Mettre à l'état: En Test?", "Repasser à l'état : A faire?"};
 				labelinfo.addMouseListener(new MouseAdapter() {
 					@Override
@@ -184,7 +191,10 @@ public class FenetreUtil {
 			}
 			else if(uneTache.getStatusEnCours().getIdStatus()==3)
 			{
-				JLabel labelinfo = new JLabel(uneTache.getNomTache());
+				JTextPane labelinfo = new JTextPane();
+				labelinfo.setText(uneTache.getNomTache());
+				labelinfo.setFocusable(false);
+				labelinfo.setBackground(uneTache.getTypeTache().getCouleurTypeTache());
 				String lesOptions[] = { "Afficher les info?","Mettre à l'état: Fini?", "Repasser à l'état : En Cours?"};
 				labelinfo.addMouseListener(new MouseAdapter() {
 					@Override
@@ -221,7 +231,10 @@ public class FenetreUtil {
 				
 			}
 			else{
-				JLabel labelinfo = new JLabel(uneTache.getNomTache());
+				JTextPane labelinfo = new JTextPane();
+				labelinfo.setText(uneTache.getNomTache());
+				labelinfo.setBackground(uneTache.getTypeTache().getCouleurTypeTache());
+				labelinfo.setFocusable(false);
 				labelinfo.addMouseListener(new MouseAdapter() {
 					@Override
 					public void mouseClicked(MouseEvent e) {
@@ -232,6 +245,8 @@ public class FenetreUtil {
 				Fenetre.fenetreMere.getJPanelFini().add(labelinfo);
 				
 			}
+			Fenetre.fenetreMere.revalidate();
+			Fenetre.fenetreMere.revalidate();
 		}
 		
 //		List<tacheGUI[]> tableauDesTaches = new ArrayList<tacheGUI[]>();
