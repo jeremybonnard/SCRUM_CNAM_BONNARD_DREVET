@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import FR.CNAM.NFP121.BONNARDDREVET.SCRUM.business.Tache;
+import FR.CNAM.NFP121.BONNARDDREVET.SCRUM.business.Utilisateur;
 
 /** TacheUtils est la classe permettant d'interagir avec les objets Tache
  * Elle est composée de 2 méthodes
@@ -84,6 +85,28 @@ public class TacheUtils {
 			e.printStackTrace();
 		}
 		return allTaches;
+	}
+	
+	public static void modifiertache(Tache ancienTache, Tache nouveauTache)
+	{
+		ObjectOutputStream ObjectOutput = null;
+		List<Tache> allTaches = allTaches();
+		allTaches.remove(ancienTache);
+		allTaches.add(nouveauTache);
+		try {
+			ObjectOutput = new ObjectOutputStream(new FileOutputStream("lesTaches.ser", false));
+			
+			ObjectOutput.writeObject(allTaches);
+			ObjectOutput.close();
+	
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
 	}
 
 }

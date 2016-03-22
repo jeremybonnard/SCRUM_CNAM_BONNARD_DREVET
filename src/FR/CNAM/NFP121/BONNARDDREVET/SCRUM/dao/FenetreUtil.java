@@ -132,8 +132,16 @@ public class FenetreUtil {
 						}
 						else
 						{
+							Tache nouveauTache = null;
+							try {
+								nouveauTache = uneTache.clone();
+							} catch (CloneNotSupportedException a) {
+								// TODO Auto-generated catch block
+								a.printStackTrace();
+							}
 							
-							uneTache.setStatusEnCours(StatusUtil.getStatusEnCours());
+							nouveauTache.setStatusEnCours(StatusUtil.getStatusEnCours());
+							TacheUtils.modifiertache(uneTache, nouveauTache);
 							FenetreUtil.actualiserTache();
 						}
 					}
@@ -157,11 +165,29 @@ public class FenetreUtil {
 						else
 						{
 							if(retourdialog == 1){
-								uneTache.setStatusEnCours(StatusUtil.getStatusEnTest());
+								Tache nouveauTache = null;
+								try {
+									nouveauTache = uneTache.clone();
+								} catch (CloneNotSupportedException a) {
+									// TODO Auto-generated catch block
+									a.printStackTrace();
+								}
+								
+								nouveauTache.setStatusEnCours(StatusUtil.getStatusEnTest());
+								TacheUtils.modifiertache(uneTache, nouveauTache);
 								FenetreUtil.actualiserTache();
 							}
 							else if(retourdialog == 2){
-								uneTache.setStatusEnCours(StatusUtil.getStatusDepart());
+								Tache nouveauTache = null;
+								try {
+									nouveauTache = uneTache.clone();
+								} catch (CloneNotSupportedException a) {
+									// TODO Auto-generated catch block
+									a.printStackTrace();
+								}
+								
+								nouveauTache.setStatusEnCours(StatusUtil.getStatusDepart());
+								TacheUtils.modifiertache(uneTache, nouveauTache);
 								FenetreUtil.actualiserTache();
 							}
 							else 
@@ -191,11 +217,29 @@ public class FenetreUtil {
 						else
 						{
 							if(retourdialog == 1){
-								uneTache.setStatusEnCours(StatusUtil.getStatusFini());
+								Tache nouveauTache = null;
+								try {
+									nouveauTache = uneTache.clone();
+								} catch (CloneNotSupportedException a) {
+									// TODO Auto-generated catch block
+									a.printStackTrace();
+								}
+								
+								nouveauTache.setStatusEnCours(StatusUtil.getStatusFini());
+								TacheUtils.modifiertache(uneTache, nouveauTache);
 								FenetreUtil.actualiserTache();
 							}
 							else if(retourdialog == 2){
-								uneTache.setStatusEnCours(StatusUtil.getStatusEnCours());
+								Tache nouveauTache = null;
+								try {
+									nouveauTache = uneTache.clone();
+								} catch (CloneNotSupportedException a) {
+									// TODO Auto-generated catch block
+									a.printStackTrace();
+								}
+								
+								nouveauTache.setStatusEnCours(StatusUtil.getStatusEnCours());
+								TacheUtils.modifiertache(uneTache, nouveauTache);
 								FenetreUtil.actualiserTache();
 							}
 							else 

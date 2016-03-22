@@ -24,7 +24,7 @@ import java.util.List;
 
 
 
-public class Tache implements Serializable{
+public class Tache implements Serializable, Cloneable {
 	
 	public static int idTacheMax;
 	private int idTache;
@@ -144,7 +144,9 @@ public class Tache implements Serializable{
 				+ ", utilisateurTache=" + utilisateurTache + ", typeTache=" + typeTache + ", tachemax: "+ idTacheMax +"]";
 	}
 	
-	
+	public Tache clone() throws CloneNotSupportedException{ 
+		return (Tache) super.clone(); 
+		} 
 	
 	
 	
