@@ -87,11 +87,11 @@ public class TacheUtils {
 		return allTaches;
 	}
 	
-	public static void modifiertache(Tache ancienTache, Tache nouveauTache)
+	public static void modifiertache(int idAncienTache, Tache nouveauTache)
 	{
 		ObjectOutputStream ObjectOutput = null;
-		List<Tache> allTaches = allTaches();
-		allTaches.remove(ancienTache);
+		List<Tache> allTaches = allTaches();		
+		allTaches.remove(idAncienTache);
 		allTaches.add(nouveauTache);
 		try {
 			ObjectOutput = new ObjectOutputStream(new FileOutputStream("lesTaches.ser", false));
