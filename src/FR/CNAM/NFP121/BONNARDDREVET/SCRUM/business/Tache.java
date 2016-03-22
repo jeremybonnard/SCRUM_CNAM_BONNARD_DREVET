@@ -140,9 +140,12 @@ public class Tache implements Serializable, Cloneable {
 	 * Methode retournant les variables de la classe
 	 */
 	public String toString() {
-		return "Tache [idTache=" + idTache + ", nomTache=" + nomTache + ", statusEnCours=" + statusEnCours
-				+ ", utilisateurTache=" + utilisateurTache + ", typeTache=" + typeTache + ", tachemax: "+ idTacheMax +"]";
+		return "Nom de la tache : " + nomTache + "\n" + "Status de la Tache : " + statusEnCours.toString() + "\n"
+				+ "Le ou Les Utilisateurs de la Tache : " + utilisateurTache + "\n"+ "Le type de Tache :" + typeTache.toString();
 	}
+	
+	
+	
 	
 	public Tache clone() throws CloneNotSupportedException{ 
 		return (Tache) super.clone(); 

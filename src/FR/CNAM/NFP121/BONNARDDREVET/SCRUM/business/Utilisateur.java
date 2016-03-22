@@ -186,9 +186,8 @@ public class Utilisateur implements Serializable , Cloneable {
 	
 	@Override
 	public String toString() {
-		return "Utilisateur [idUtilisateur=" + idUtilisateur + ", nomUtilisateur=" + nomUtilisateur
-				+ ", prenomUtilisateur=" + prenomUtilisateur + ", mailUtilisateur=" + mailUtilisateur
-				+ ", naissanceUtilisateur=" + naissanceUtilisateur + ", tachesUtilisateur=" + tachesUtilisateur + "]";
+		
+		return nomUtilisateur+" "+prenomUtilisateur;
 	}
 	
 	public Utilisateur clone() throws CloneNotSupportedException{ 
