@@ -129,7 +129,7 @@ public class AjoutTache extends JFrame {
 						TacheUtils.enregistrerTache(tacheCree);
 						for(Utilisateur unUtilisateur : utilisateursDepart)
 						{
-							UtilisateurUtil.ajoutTacheUtilisateur(unUtilisateur, tacheCree);
+							UtilisateurUtil.ajoutTacheUtilisateur( unUtilisateur, tacheCree);
 						}
 						FenetreUtil.actualiserTache();
 						JOptionPane validationEnregistrement = new JOptionPane();

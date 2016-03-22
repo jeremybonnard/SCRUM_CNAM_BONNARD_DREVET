@@ -201,14 +201,17 @@ public class Fenetre extends JFrame {
 		JPanelEnCours = new JPanel();
 		JPanelEnCours.setBounds(126, 104, 100, 115);
 		contentPane.add(JPanelEnCours);
+		JPanelEnCours.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		JPanelEnTest = new JPanel();
 		JPanelEnTest.setBounds(226, 104, 100, 115);
 		contentPane.add(JPanelEnTest);
+		JPanelEnTest.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		JPanelFini = new JPanel();
 		JPanelFini.setBounds(324, 104, 100, 115);
 		contentPane.add(JPanelFini);
+		JPanelFini.setLayout(new GridLayout(0, 1, 0, 0));
 	}
 
 	public JMenu getMenuFichier() {

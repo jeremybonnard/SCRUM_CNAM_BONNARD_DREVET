@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import FR.CNAM.NFP121.BONNARDDREVET.SCRUM.business.Tache;
@@ -136,9 +137,16 @@ public class UtilisateurUtil {
 	 * @param uneTache
 	 * 	Prend en parametre une instance de la classe Tache
 	 */
-	public static void ajoutTacheUtilisateur(Utilisateur unUtilisateur, Tache uneTache)
+	public static void ajoutTacheUtilisateur( Utilisateur unUtilisateur, Tache uneTache)
 	{
 		List<Tache> listeTache = new ArrayList<Tache>();
+		Iterator i = UtilisateurUtil.allUtilisateurs().iterator();
+		while( i.hasNext())
+		{
+			Utilisateur unUtilisateur2 = (Utilisateur) i.next();
+		}
+		System.out.println( UtilisateurUtil.allUtilisateurs().contains(unUtilisateur));
+//		System.out.println(idUtilisateur);
 		if(unUtilisateur.getTachesUtilisateur()==null){
 			listeTache.add(uneTache);
 		}
@@ -147,18 +155,10 @@ public class UtilisateurUtil {
 			listeTache.add(uneTache);
 		}
 		
+		unUtilisateur.setTachesUtilisateur(listeTache);
 		
-		Utilisateur nouveauUtilisateur = null;
-		try {
-			nouveauUtilisateur = unUtilisateur.clone();
-		} catch (CloneNotSupportedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
-		nouveauUtilisateur.setTachesUtilisateur(listeTache);
-		
-		UtilisateurUtil.modifierUtilisateur(unUtilisateur, nouveauUtilisateur);
+//		UtilisateurUtil.modifierUtilisateur(idUtilisateur, unUtilisateur);
 		
 	}
 	
@@ -174,7 +174,7 @@ public class UtilisateurUtil {
 	
 	
 	
-	public static void modifierUtilisateur(Utilisateur ancienUtilisateur, Utilisateur nouveauUtilisateur)
+	public static void modifierUtilisateur(int ancienUtilisateur, Utilisateur nouveauUtilisateur)
 	{
 		ObjectOutputStream ObjectOutput = null;
 		List<Utilisateur> allUtilisateurs = allUtilisateurs();
