@@ -3,12 +3,16 @@ package FR.CNAM.NFP121.BONNARDDREVET.SCRUM.dao;
 import java.awt.MenuItem;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
@@ -102,47 +106,162 @@ public class FenetreUtil {
 	
 	public static void actualiserTache(){
 		
-
-		List<tacheGUI[]> tableauDesTaches = new ArrayList<tacheGUI[]>();
-		tacheGUI[] titres = {new tacheGUI("A faire",false), new tacheGUI("En Dévellopement",false), new tacheGUI("En Test",false),new tacheGUI("Fini",false)};
-		tableauDesTaches.add(titres);
-		List<Tache> allTache = TacheUtils.allTaches();
+		List<Tache> allTaches = TacheUtils.allTaches();
+		Fenetre.fenetreMere.getJPanelAFaire().removeAll();
+		Fenetre.fenetreMere.getJPanelEnCours().removeAll();
+		Fenetre.fenetreMere.getJPanelEnTest().removeAll();
+		Fenetre.fenetreMere.getJPanelFini().removeAll();
 		
-		Iterator i =  allTache.iterator();
-//		tacheGUI[] ligneTache = {null,null,null,null};
+		Iterator i = allTaches.iterator();
 		while(i.hasNext())
 		{
 			Tache uneTache = (Tache) i.next();
-			
 			if(uneTache.getStatusEnCours().getIdStatus()==1)
 			{
-				tacheGUI[] ligneTache = {new tacheGUI(uneTache.getNomTache(),true), new tacheGUI("",false),new tacheGUI("",false),new tacheGUI("",false)};
-				tableauDesTaches.add(ligneTache);
-				
+				JLabel labelinfo = new JLabel(uneTache.getNomTache());
+				String lesOptions[] = { "Afficher les info?","Mettre à l'états: En cours?"};
+				labelinfo.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						JOptionPane info = new JOptionPane();
+						int retourdialog = info.showOptionDialog(info, "Que souhaiter vous faire avec cette tache?", "Option sur la tache ", JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE,null, lesOptions, lesOptions[1]);
+						if(retourdialog==0){
+							
+							JOptionPane infoTache = new JOptionPane();
+							infoTache.showMessageDialog(infoTache, uneTache.toString(), uneTache.getNomTache(), JOptionPane.INFORMATION_MESSAGE);
+						}
+						else
+						{
+							
+							uneTache.setStatusEnCours(StatusUtil.getStatusEnCours());
+							FenetreUtil.actualiserTache();
+						}
+					}
+				});
+				Fenetre.fenetreMere.getJPanelAFaire().add(labelinfo);
 			}
-			else if(uneTache.getStatusEnCours().getIdStatus()==2)
+			else if(uneTache.getStatusEnCours().getIdStatus() ==2)
 			{
-				tacheGUI[] ligneTache = { new tacheGUI("",false),new tacheGUI(uneTache.getNomTache(),true), new tacheGUI("",false),new tacheGUI("",false)};
-				tableauDesTaches.add(ligneTache);
+				JLabel labelinfo = new JLabel(uneTache.getNomTache());
+				String lesOptions[] = { "Afficher les info?","Mettre à l'état: En Test?", "Repasser à l'état : A faire?"};
+				labelinfo.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						JOptionPane info = new JOptionPane();
+						int retourdialog = info.showOptionDialog(info, "Que souhaiter vous faire avec cette tache?", "Option sur la tache ", JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE,null, lesOptions, lesOptions[1]);
+						if(retourdialog==0){
+							
+							JOptionPane infoTache = new JOptionPane();
+							infoTache.showMessageDialog(infoTache, uneTache.toString(), uneTache.getNomTache(), JOptionPane.INFORMATION_MESSAGE);
+						}
+						else
+						{
+							if(retourdialog == 1){
+								uneTache.setStatusEnCours(StatusUtil.getStatusEnTest());
+								FenetreUtil.actualiserTache();
+							}
+							else if(retourdialog == 2){
+								uneTache.setStatusEnCours(StatusUtil.getStatusDepart());
+								FenetreUtil.actualiserTache();
+							}
+							else 
+							{
+								
+							}
+						}
+					}
+				});
+				Fenetre.fenetreMere.getJPanelEnCours().add(labelinfo);
+				
 			}
 			else if(uneTache.getStatusEnCours().getIdStatus()==3)
 			{
-				tacheGUI[] ligneTache = { new tacheGUI("",false), new tacheGUI("",false),new tacheGUI(uneTache.getNomTache(),true),new tacheGUI("",false)};
-				tableauDesTaches.add(ligneTache);
-			}			
-			else if(uneTache.getStatusEnCours().getIdStatus()==4)
-			{
-				tacheGUI[] ligneTache = { new tacheGUI("",false), new tacheGUI("",false),new tacheGUI("",false),new tacheGUI(uneTache.getNomTache(),true)};
-				tableauDesTaches.add(ligneTache);
-			}			
-			else
-			{
+				JLabel labelinfo = new JLabel(uneTache.getNomTache());
+				String lesOptions[] = { "Afficher les info?","Mettre à l'état: Fini?", "Repasser à l'état : En Cours?"};
+				labelinfo.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						JOptionPane info = new JOptionPane();
+						int retourdialog = info.showOptionDialog(info, "Que souhaiter vous faire avec cette tache?", "Option sur la tache ", JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE,null, lesOptions, lesOptions[1]);
+						if(retourdialog==0){
+							
+							JOptionPane infoTache = new JOptionPane();
+							infoTache.showMessageDialog(infoTache, uneTache.toString(), uneTache.getNomTache(), JOptionPane.INFORMATION_MESSAGE);
+						}
+						else
+						{
+							if(retourdialog == 1){
+								uneTache.setStatusEnCours(StatusUtil.getStatusFini());
+								FenetreUtil.actualiserTache();
+							}
+							else if(retourdialog == 2){
+								uneTache.setStatusEnCours(StatusUtil.getStatusEnCours());
+								FenetreUtil.actualiserTache();
+							}
+							else 
+							{
+								
+							}
+						}
+					}
+				});
+				Fenetre.fenetreMere.getJPanelEnTest().add(labelinfo);
 				
 			}
-			
-			
+			else{
+				JLabel labelinfo = new JLabel(uneTache.getNomTache());
+				labelinfo.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						JOptionPane infoTache = new JOptionPane();
+						infoTache.showMessageDialog(infoTache, uneTache.toString(), uneTache.getNomTache(), JOptionPane.INFORMATION_MESSAGE);
+					}
+				});
+				Fenetre.fenetreMere.getJPanelFini().add(labelinfo);
+				
+			}
 		}
 		
+//		List<tacheGUI[]> tableauDesTaches = new ArrayList<tacheGUI[]>();
+//		tacheGUI[] titres = {new tacheGUI("A faire",false), new tacheGUI("En Dévellopement",false), new tacheGUI("En Test",false),new tacheGUI("Fini",false)};
+//		tableauDesTaches.add(titres);
+//		List<Tache> allTache = TacheUtils.allTaches();
+//		
+//		Iterator i =  allTache.iterator();
+////		tacheGUI[] ligneTache = {null,null,null,null};
+//		while(i.hasNext())
+//		{
+//			Tache uneTache = (Tache) i.next();
+//			
+//			if(uneTache.getStatusEnCours().getIdStatus()==1)
+//			{
+//				tacheGUI[] ligneTache = {new tacheGUI(uneTache.getNomTache(),true), new tacheGUI("",false),new tacheGUI("",false),new tacheGUI("",false)};
+//				tableauDesTaches.add(ligneTache);
+//				
+//			}
+//			else if(uneTache.getStatusEnCours().getIdStatus()==2)
+//			{
+//				tacheGUI[] ligneTache = { new tacheGUI("",false),new tacheGUI(uneTache.getNomTache(),true), new tacheGUI("",false),new tacheGUI("",false)};
+//				tableauDesTaches.add(ligneTache);
+//			}
+//			else if(uneTache.getStatusEnCours().getIdStatus()==3)
+//			{
+//				tacheGUI[] ligneTache = { new tacheGUI("",false), new tacheGUI("",false),new tacheGUI(uneTache.getNomTache(),true),new tacheGUI("",false)};
+//				tableauDesTaches.add(ligneTache);
+//			}			
+//			else if(uneTache.getStatusEnCours().getIdStatus()==4)
+//			{
+//				tacheGUI[] ligneTache = { new tacheGUI("",false), new tacheGUI("",false),new tacheGUI("",false),new tacheGUI(uneTache.getNomTache(),true)};
+//				tableauDesTaches.add(ligneTache);
+//			}			
+//			else
+//			{
+//				
+//			}
+//			
+//			
+//		}
+//		
 		
 	}
 	

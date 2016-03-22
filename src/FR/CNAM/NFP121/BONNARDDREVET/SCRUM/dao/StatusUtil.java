@@ -17,7 +17,19 @@ public class StatusUtil {
 	
 	public static Status getStatusDepart()
 	{
-		return new Status(0,"A Faire");
+		return new Status(1,"A Faire");
+	}
+	public static Status getStatusEnCours()
+	{
+		return new Status(2,"En cours");
+	}
+	public static Status getStatusEnTest()
+	{
+		return new Status(3,"En Test");
+	}
+	public static Status getStatusFini()
+	{
+		return new Status(4,"Fini");
 	}
 
 }

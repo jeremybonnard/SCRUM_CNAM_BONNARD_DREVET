@@ -29,6 +29,8 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.ListSelectionModel;
+import java.awt.GridLayout;
+import javax.swing.JLabel;
 
 public class Fenetre extends JFrame {
 
@@ -39,6 +41,11 @@ public class Fenetre extends JFrame {
 	private JMenu mnTche;
 	private JMenu mnAPropos;
 	private JTable tableTache;
+	private JPanel JPanelAFaire;
+	private JPanel JPanelEnCours;
+	private JPanel JPanelEnTest;
+	private JPanel JPanelFini;
+	private JLabel lblTest_1;
 	/**
 	 * Launch the application.
 	 */
@@ -193,6 +200,35 @@ public class Fenetre extends JFrame {
 		tableTache.setBounds(27, 11, 376, 80);
 		
 		contentPane.add(tableTache);
+		
+		JPanelAFaire = new JPanel();
+		JPanelAFaire.setBounds(27, 104, 100, 115);
+		contentPane.add(JPanelAFaire);
+		JPanelAFaire.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		JLabel lblTest = new JLabel("Test");
+		lblTest.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				FenetreUtil.actualiserTache();
+			}
+		});
+		JPanelAFaire.add(lblTest);
+		
+		lblTest_1 = new JLabel("Test2");
+		JPanelAFaire.add(lblTest_1);
+		
+		JPanelEnCours = new JPanel();
+		JPanelEnCours.setBounds(126, 104, 100, 115);
+		contentPane.add(JPanelEnCours);
+		
+		JPanelEnTest = new JPanel();
+		JPanelEnTest.setBounds(226, 104, 100, 115);
+		contentPane.add(JPanelEnTest);
+		
+		JPanelFini = new JPanel();
+		JPanelFini.setBounds(324, 104, 100, 115);
+		contentPane.add(JPanelFini);
 	}
 
 	public JMenu getMenuFichier() {
@@ -207,5 +243,16 @@ public class Fenetre extends JFrame {
 	public JMenu getMenuAPropos() {
 		return mnAPropos;
 	}
-	
+	public JPanel getJPanelAFaire() {
+		return JPanelAFaire;
+	}
+	public JPanel getJPanelEnCours() {
+		return JPanelEnCours;
+	}
+	public JPanel getJPanelEnTest() {
+		return JPanelEnTest;
+	}
+	public JPanel getJPanelFini() {
+		return JPanelFini;
+	}
 }
