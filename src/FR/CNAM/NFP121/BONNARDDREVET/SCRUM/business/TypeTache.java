@@ -80,6 +80,10 @@ public class TypeTache implements Serializable {
 		this.nomTypeTache = nomTypeTache;
 		this.couleurTypeTache = couleurTypeTache;
 	}
+	@Override
+	public String toString() {
+		return nomTypeTache;
+	}
 	
 	
 	

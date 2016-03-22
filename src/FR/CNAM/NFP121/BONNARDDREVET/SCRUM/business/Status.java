@@ -58,6 +58,10 @@ public class Status implements Serializable {
 		this.idStatus = idStatus;
 		this.nomStatus = nomStatus;
 	}
+	@Override
+	public String toString() {
+		return nomStatus;
+	}
 	
 	
 	
