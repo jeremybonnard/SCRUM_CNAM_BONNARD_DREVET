@@ -87,6 +87,17 @@ public class TacheUtils {
 		return allTaches;
 	}
 	
+	/**
+	 * Methode permettant la modification des taches
+	 * @param idAncienTache
+	 * 	Faire reference à l'identifiant de l'ancien tache
+	 * @param nouveauTache
+	 * 	Faire reference à un instance de la classe Tache
+	 * 
+	 */
+	
+	
+	
 	public static void modifiertache(int idAncienTache, Tache nouveauTache)
 	{
 		ObjectOutputStream ObjectOutput = null;
