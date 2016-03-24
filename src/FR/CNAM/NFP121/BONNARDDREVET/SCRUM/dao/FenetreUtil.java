@@ -26,7 +26,7 @@ import FR.CNAM.NFP121.BONNARDDREVET.SCRUM.gui.AjoutUtilisateur;
 import FR.CNAM.NFP121.BONNARDDREVET.SCRUM.gui.Fenetre;
 
 /**
- * Classe FenetreUtil permettant la manipulation de la fenetre principal et tous ces éléments
+ * Classe FenetreUtil permettant la manipulation de la fenetre principal et tous ces Ã©lÃ©ments
  * Cette classe Comporte 2 methodes:
  * 	- actualiserUtilisateur
  * 	- actualiserTacher
@@ -37,8 +37,8 @@ import FR.CNAM.NFP121.BONNARDDREVET.SCRUM.gui.Fenetre;
 public class FenetreUtil {
 	
 	/**
-	 *La methode actualiserUtilisateur permet de mettre à jour la barre d'outils "Equipe" et d'y ajouter le nom de l'utilisateur venant d'etre enregistrer au menu.
-	 *elle gere aussi l'affichage des propriétés affecté à lutilisateur (nom,prenom,tache confiée)
+	 *La methode actualiserUtilisateur permet de mettre Ã  jour la barre d'outils "Equipe" et d'y ajouter le nom de l'utilisateur venant d'etre enregistrer au menu.
+	 *elle gere aussi l'affichage des propriÃ©tÃ©s affectÃ© Ã  lutilisateur (nom,prenom,tache confiÃ©e)
 	 */
 	
 	
@@ -99,7 +99,8 @@ public class FenetreUtil {
 
 	
 	/**
-	 * Methode permettant d'actualiser les donn�es du tableau
+	 * La methode actualiserTache permet l'affichage, la gestion et enfin l'actualisation des donnée affiche sur les différents JPanel
+	 * 
 	 * 
 	 */
 	
@@ -137,7 +138,7 @@ public class FenetreUtil {
 				labelinfo.setFocusable(false);
 				labelinfo.setText(uneTache.getNomTache());
 				labelinfo.setBackground(uneTache.getTypeTache().getCouleurTypeTache());
-				String lesOptions[] = { "Afficher les info?","Mettre � l'�tats: En cours?"};
+				String lesOptions[] = { "Afficher les info?","Mettre à l'états: En cours?"};
 				labelinfo.addMouseListener(new MouseAdapter() {
 					@Override
 					public void mouseClicked(MouseEvent e) {
@@ -169,7 +170,7 @@ public class FenetreUtil {
 				labelinfo.setFocusable(false);
 				labelinfo.setText(uneTache.getNomTache());
 				labelinfo.setBackground(uneTache.getTypeTache().getCouleurTypeTache());
-				String lesOptions[] = { "Afficher les info?","Mettre � l'�tat: En Test?", "Repasser � l'�tat : A faire?"};
+				String lesOptions[] = { "Afficher les info?","Mettre à l'état: En Test?", "Repasser à l'état : A faire?"};
 				labelinfo.addMouseListener(new MouseAdapter() {
 					@Override
 					public void mouseClicked(MouseEvent e) {
@@ -214,7 +215,7 @@ public class FenetreUtil {
 				labelinfo.setText(uneTache.getNomTache());
 				labelinfo.setFocusable(false);
 				labelinfo.setBackground(uneTache.getTypeTache().getCouleurTypeTache());
-				String lesOptions[] = { "Afficher les info?","Mettre � l'�tat: Fini?", "Repasser � l'�tat : En Cours?"};
+				String lesOptions[] = { "Afficher les info?","Mettre à l'état: Fini?", "Repasser à l'état : En Cours?"};
 				labelinfo.addMouseListener(new MouseAdapter() {
 					@Override
 					public void mouseClicked(MouseEvent e) {
@@ -271,6 +272,7 @@ public class FenetreUtil {
 			Fenetre.fenetreMere.revalidate();
 
 		}
+
 		Fenetre.fenetreMere.revalidate();
 	}
 	
