@@ -106,22 +106,33 @@ public class FenetreUtil {
 	
 	
 	public static void actualiserTache(){
-		
+		// Récuperation de toute les taches
 		List<Tache> allTaches = TacheUtils.allTaches();
+		
+		// Supperessions des anciennes taches
 		Fenetre.fenetreMere.getJPanelAFaire().removeAll();
 		Fenetre.fenetreMere.getJPanelEnCours().removeAll();
 		Fenetre.fenetreMere.getJPanelEnTest().removeAll();
 		Fenetre.fenetreMere.getJPanelFini().removeAll();
+		Fenetre.fenetreMere.getJPanelAFaire().validate();
+		Fenetre.fenetreMere.getJPanelEnCours().validate();
+		Fenetre.fenetreMere.getJPanelEnTest().validate();
+		Fenetre.fenetreMere.getJPanelFini().validate();
 		
+		/*
+		 * Boucle sur chaque tache pour la placer dans le scrum
+		 */
 		Iterator i = allTaches.iterator();
-		int iter = 0;
 		while(i.hasNext())
 		{
-			System.out.println(iter);
-			iter++;
 			Tache uneTache = (Tache) i.next();
+			
+			// Si la tache est: A faire
 			if(uneTache.getStatusEnCours().getIdStatus()==1)
 			{
+				/*
+				 * Création d'un JTextPane pour le choix des actions à faire sur la tache
+				 */
 				JTextPane labelinfo = new JTextPane();
 				labelinfo.setFocusable(false);
 				labelinfo.setText(uneTache.getNomTache());
@@ -148,8 +159,12 @@ public class FenetreUtil {
 				});
 				Fenetre.fenetreMere.getJPanelAFaire().add(labelinfo);
 			}
+			// Si la tache est: En Cours
 			else if(uneTache.getStatusEnCours().getIdStatus() ==2)
 			{
+				/*
+				 * Création d'un JTextPane pour le choix des actions à faire sur la tache
+				 */
 				JTextPane labelinfo = new JTextPane();
 				labelinfo.setFocusable(false);
 				labelinfo.setText(uneTache.getNomTache());
@@ -189,8 +204,12 @@ public class FenetreUtil {
 				Fenetre.fenetreMere.getJPanelEnCours().add(labelinfo);
 				
 			}
+			// Si la tache est: En Test
 			else if(uneTache.getStatusEnCours().getIdStatus()==3)
 			{
+				/*
+				 * Création d'un JTextPane pour le choix des actions à faire sur la tache
+				 */
 				JTextPane labelinfo = new JTextPane();
 				labelinfo.setText(uneTache.getNomTache());
 				labelinfo.setFocusable(false);
@@ -230,7 +249,11 @@ public class FenetreUtil {
 				Fenetre.fenetreMere.getJPanelEnTest().add(labelinfo);
 				
 			}
+			// Si la tache est : Fini ou si il y a une erreur.
 			else{
+				/*
+				 * Création d'un JTextPane pour le choix des actions a faire sur la tache
+				 */
 				JTextPane labelinfo = new JTextPane();
 				labelinfo.setText(uneTache.getNomTache());
 				labelinfo.setBackground(uneTache.getTypeTache().getCouleurTypeTache());
@@ -246,50 +269,9 @@ public class FenetreUtil {
 				
 			}
 			Fenetre.fenetreMere.revalidate();
-			Fenetre.fenetreMere.revalidate();
+
 		}
-		
-//		List<tacheGUI[]> tableauDesTaches = new ArrayList<tacheGUI[]>();
-//		tacheGUI[] titres = {new tacheGUI("A faire",false), new tacheGUI("En Dévellopement",false), new tacheGUI("En Test",false),new tacheGUI("Fini",false)};
-//		tableauDesTaches.add(titres);
-//		List<Tache> allTache = TacheUtils.allTaches();
-//		
-//		Iterator i =  allTache.iterator();
-////		tacheGUI[] ligneTache = {null,null,null,null};
-//		while(i.hasNext())
-//		{
-//			Tache uneTache = (Tache) i.next();
-//			
-//			if(uneTache.getStatusEnCours().getIdStatus()==1)
-//			{
-//				tacheGUI[] ligneTache = {new tacheGUI(uneTache.getNomTache(),true), new tacheGUI("",false),new tacheGUI("",false),new tacheGUI("",false)};
-//				tableauDesTaches.add(ligneTache);
-//				
-//			}
-//			else if(uneTache.getStatusEnCours().getIdStatus()==2)
-//			{
-//				tacheGUI[] ligneTache = { new tacheGUI("",false),new tacheGUI(uneTache.getNomTache(),true), new tacheGUI("",false),new tacheGUI("",false)};
-//				tableauDesTaches.add(ligneTache);
-//			}
-//			else if(uneTache.getStatusEnCours().getIdStatus()==3)
-//			{
-//				tacheGUI[] ligneTache = { new tacheGUI("",false), new tacheGUI("",false),new tacheGUI(uneTache.getNomTache(),true),new tacheGUI("",false)};
-//				tableauDesTaches.add(ligneTache);
-//			}			
-//			else if(uneTache.getStatusEnCours().getIdStatus()==4)
-//			{
-//				tacheGUI[] ligneTache = { new tacheGUI("",false), new tacheGUI("",false),new tacheGUI("",false),new tacheGUI(uneTache.getNomTache(),true)};
-//				tableauDesTaches.add(ligneTache);
-//			}			
-//			else
-//			{
-//				
-//			}
-//			
-//			
-//		}
-//		
-		
+		Fenetre.fenetreMere.revalidate();
 	}
 	
 	

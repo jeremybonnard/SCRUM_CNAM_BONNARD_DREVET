@@ -139,6 +139,7 @@ public class UtilisateurUtil {
 	 */
 	public static void ajoutTacheUtilisateur( Utilisateur unUtilisateur, Tache uneTache)
 	{
+		int idUtilisateur = -1;
 		List<Tache> listeTache = new ArrayList<Tache>();
 		if(unUtilisateur.getTachesUtilisateur()==null){
 			listeTache.add(uneTache);
@@ -147,7 +148,15 @@ public class UtilisateurUtil {
 			listeTache.addAll(unUtilisateur.getTachesUtilisateur());
 			listeTache.add(uneTache);
 		}
-					UtilisateurUtil.modifierUtilisateur(unUtilisateur.getIdUtilisateur(), unUtilisateur);	
+		List<Utilisateur> allUtilisateur = UtilisateurUtil.allUtilisateurs();
+		for(Utilisateur unUtilisateurAll : allUtilisateur)
+		{
+			if( unUtilisateur.getIdUtilisateur()==unUtilisateurAll.getIdUtilisateur())
+			{
+				idUtilisateur = allUtilisateur.indexOf(unUtilisateurAll);
+			}
+		}
+		UtilisateurUtil.modifierUtilisateur(idUtilisateur, unUtilisateur);	
 		
 	}
 	
@@ -167,8 +176,10 @@ public class UtilisateurUtil {
 	{
 		ObjectOutputStream ObjectOutput = null;
 		List<Utilisateur> allUtilisateurs = allUtilisateurs();
+		System.out.println(allUtilisateurs);
 		allUtilisateurs.remove(ancienUtilisateur);
 		allUtilisateurs.add(nouveauUtilisateur);
+		System.out.println(allUtilisateurs);
 		try {
 			ObjectOutput = new ObjectOutputStream(new FileOutputStream("lesUtilisateurs.ser", false));
 			

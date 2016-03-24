@@ -85,7 +85,20 @@ public class Fenetre extends JFrame {
 		mnFichier = new JMenu("Fichier");
 		menuBar.add(mnFichier);
 		
+		/*
+		 * Bouton Sauvegarder
+		 */
 		JMenuItem mntmSauvegarder = new JMenuItem("Sauvegarder");
+		mntmSauvegarder.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				/*
+				 * Affichage d'un pane pour informer de l'automatisation des sauvegardes.
+				 */
+				JOptionPane JOPaneSauvegarde = new JOptionPane();
+				JOPaneSauvegarde.showMessageDialog(JOPaneSauvegarde, "Les sauvegardes ont toutes été automatisé.", "Sauvegarde", JOptionPane.INFORMATION_MESSAGE);
+
+			}
+		});
 		mnFichier.add(mntmSauvegarder);
 		
 		JMenuItem mntmQuitter = new JMenuItem("Quitter");
@@ -235,7 +248,6 @@ public class Fenetre extends JFrame {
 		contentPane.add(lblFini);
 		Fenetre.fenetreMere = this;
 		FenetreUtil.actualiserTache();
-
 	}
 
 	public JMenu getMenuFichier() {
